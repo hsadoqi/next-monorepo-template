@@ -1,0 +1,65 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+pnpm-lock.yaml
+
+# Build outputs
+dist/
+build/
+.next/
+.turbo/
+out/
+.cache/
+
+# Development
+.env
+.env.local
+.env.*.local
+.DS_Store
+*.swp
+*.swo
+*~
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+.idea/
+*.iml
+*.sublime-workspace
+*.sublime-project
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+
+# IDE/Editor
+.vim/
+.emacs.d/
+.eslintignore
+.prettierignore
+
+# OS specific
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Storybook
+storybook-static/
+
+# Misc
+.turbo/
