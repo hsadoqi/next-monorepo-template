@@ -9,10 +9,12 @@
 		"lint": "turbo run lint",
 		"format": "turbo run format",
 		"check": "turbo run check",
+		"lint:staged": "lint-staged",
 		"test": "echo \"No test tasks configured yet\"",
 		"storybook": "echo \"No storybook tasks configured yet\"",
 		"shadcn:init": "turbo run shadcn:init --filter=@repo/ui",
-		"shadcn:add": "turbo run shadcn:add --filter=@repo/ui --"
+		"shadcn:add": "turbo run shadcn:add --filter=@repo/ui --",
+		"prepare": "husky"
 	},
 	"keywords": [],
 	"author": "Hanaa Sadoqi",
@@ -21,12 +23,19 @@
 	"devDependencies": {
 		"@biomejs/biome": "^2.4.14",
 		"@repo/biome-config": "workspace:*",
+		"husky": "^9.1.7",
+		"lint-staged": "^17.0.2",
 		"turbo": "^2.9.9",
 		"typescript": "^6.0.3"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [
 			"esbuild"
+		]
+	},
+	"lint-staged": {
+		"*.{js,mjs,cjs,ts,tsx,jsx,json,css,md,mdx}": [
+			"biome check --write --no-errors-on-unmatched"
 		]
 	}
 }
