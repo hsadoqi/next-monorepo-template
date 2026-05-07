@@ -1,37 +1,50 @@
 {
 	"$schema": "https://turbo.build/schema.json",
-    "ui": "tui",
+	"ui": "tui",
 	"tasks": {
-        "web#build": {
-            "outputs": [
-                ".next/**"
-            ]
-		},
-        "web#dev": {
-			"cache": false,
-			"persistent": true
-		},
-                "web#lint": {},
-                "@repo/ui#lint": {},
-                "web#format": {
+		"clean": {
 			"cache": false
 		},
-        "@repo/ui#format": {
-            "cache": false
-        },
-        "web#check": {},
-        "@repo/ui#check": {},
-        "web#storybook": {
+		"build": {
+			"dependsOn": ["^build"],
+			"inputs": ["$TURBO_DEFAULT$", "!**/*.stories.{tsx,jsx,mdx}"],
+			"outputs": [".next/**", "!.next/cache/**", "storybook-static/**"]
+		},
+		"storybook#build": {
+			"outputs": ["storybook-static/**"]
+		},
+		"web#build": {
+			"outputs": [".next/**"]
+		},
+		"web#dev": {
 			"cache": false,
 			"persistent": true
-        },
-        "@repo/ui#shadcn:init": {
-            "cache": false,
-            "interactive": true
-        },
-        "@repo/ui#shadcn:add": {
-            "cache": false,
-            "interactive": true
+		},
+		"web#lint": {},
+		"@repo/ui#lint": {},
+		"web#format": {
+			"cache": false
+		},
+		"storybook#format": {
+			"cache": false
+		},
+		"@repo/ui#format": {
+			"cache": false
+		},
+		"web#check": {},
+		"storybook#check": {},
+		"@repo/ui#check": {},
+		"storybook#dev": {
+			"cache": false,
+			"persistent": true
+		},
+		"@repo/ui#shadcn:init": {
+			"cache": false,
+			"interactive": true
+		},
+		"@repo/ui#shadcn:add": {
+			"cache": false,
+			"interactive": true
 		}
 	}
 }

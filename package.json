@@ -11,9 +11,11 @@
 		"check": "turbo run check",
 		"lint:staged": "lint-staged",
 		"test": "echo \"No test tasks configured yet\"",
-		"storybook": "echo \"No storybook tasks configured yet\"",
+		"storybook": "turbo run dev --filter=storybook",
+		"storybook:build": "turbo run build --filter=storybook",
 		"shadcn:init": "turbo run shadcn:init --filter=@repo/ui",
 		"shadcn:add": "turbo run shadcn:add --filter=@repo/ui --",
+		"clean": "turbo run clean && rm -rf node_modules",
 		"prepare": "husky"
 	},
 	"keywords": [],

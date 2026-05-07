@@ -1,14 +1,17 @@
 # Dependencies
-node_modules/
-.pnpm-store/
+node_modules
+.pnpm-store
 
 # Build outputs
-dist/
-build/
-.next/
-.turbo/
-out/
-.cache/
+dist
+build
+.next
+.turbo
+out
+.cache
+
+# Storybook
+storybook-static
 
 # Development
 .env
@@ -44,7 +47,7 @@ Thumbs.db
 .LSOverride
 
 # Logs
-logs/
+logs
 *.log
 npm-debug.log*
 pnpm-debug.log*
@@ -57,8 +60,3 @@ pids/
 *.seed
 *.pid.lock
 
-# Storybook
-storybook-static/
-
-# Misc
-.turbo/
