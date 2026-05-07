@@ -1,0 +1,14 @@
+{
+	"extends": "@repo/typescript-config/base.json",
+	"compilerOptions": {
+		"rootDir": "src",
+		"outDir": "dist",
+		"types": ["vitest/globals"],
+		"paths": {
+			"@repo/ui-components/*": ["./src/*"],
+			"@repo/ui-hooks": ["../hooks/src/index.ts"]
+		},
+		"jsx": "react-jsx"
+	},
+	"include": ["src/**/*", "@repo/vitest-config/jsdom"]
+}
