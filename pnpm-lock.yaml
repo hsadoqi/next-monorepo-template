@@ -43,9 +43,9 @@ importers:
       '@repo/tailwind-config':
         specifier: workspace:*
         version: link:../../packages/configs/tailwind-config
-      '@repo/ui':
+      '@repo/ui-components':
         specifier: workspace:*
-        version: link:../../packages/ui
+        version: link:../../packages/ui/components
       react:
         specifier: 19.2.6
         version: 19.2.6
@@ -104,9 +104,9 @@ importers:
 
   apps/web:
     dependencies:
-      '@repo/ui':
+      '@repo/ui-components':
         specifier: workspace:*
-        version: link:../../packages/ui
+        version: link:../../packages/ui/components
       next:
         specifier: 16.2.5
         version: 16.2.5(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -189,11 +189,44 @@ importers:
         specifier: 3.2.4
         version: 3.2.4(@types/node@20.19.39)(jiti@2.7.0)(jsdom@26.1.0)(lightningcss@1.32.0)(yaml@2.8.4)
 
-  packages/ui:
+  packages/shared/types:
+    devDependencies:
+      '@repo/biome-config':
+        specifier: workspace:*
+        version: link:../../configs/biome-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../configs/typescript-config
+      typescript:
+        specifier: 6.0.3
+        version: 6.0.3
+
+  packages/shared/utils:
+    devDependencies:
+      '@repo/biome-config':
+        specifier: workspace:*
+        version: link:../../configs/biome-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../configs/typescript-config
+      '@repo/vitest-config':
+        specifier: workspace:*
+        version: link:../../configs/vitest-config
+      typescript:
+        specifier: 6.0.3
+        version: 6.0.3
+      vitest:
+        specifier: 3.2.4
+        version: 3.2.4(@types/node@20.19.39)(jiti@2.7.0)(jsdom@29.1.1)(lightningcss@1.32.0)(yaml@2.8.4)
+
+  packages/ui/components:
     dependencies:
       '@radix-ui/react-slot':
         specifier: ^1.2.4
         version: 1.2.4(@types/react@19.2.14)(react@19.2.6)
+      '@repo/ui-hooks':
+        specifier: workspace:*
+        version: link:../hooks
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -209,16 +242,16 @@ importers:
     devDependencies:
       '@repo/biome-config':
         specifier: workspace:*
-        version: link:../configs/biome-config
+        version: link:../../configs/biome-config
       '@repo/tailwind-config':
         specifier: workspace:*
-        version: link:../configs/tailwind-config
+        version: link:../../configs/tailwind-config
       '@repo/typescript-config':
         specifier: workspace:*
-        version: link:../configs/typescript-config
+        version: link:../../configs/typescript-config
       '@repo/vitest-config':
         specifier: workspace:*
-        version: link:../configs/vitest-config
+        version: link:../../configs/vitest-config
       '@storybook/react':
         specifier: 10.3.6
         version: 10.3.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(storybook@10.3.6(@testing-library/dom@10.4.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(typescript@6.0.3)
@@ -249,6 +282,78 @@ importers:
       tailwindcss:
         specifier: 4.2.4
         version: 4.2.4
+      typescript:
+        specifier: 6.0.3
+        version: 6.0.3
+      vitest:
+        specifier: 3.2.4
+        version: 3.2.4(@types/node@20.19.39)(jiti@2.7.0)(jsdom@29.1.1)(lightningcss@1.32.0)(yaml@2.8.4)
+
+  packages/ui/hooks:
+    devDependencies:
+      '@repo/biome-config':
+        specifier: workspace:*
+        version: link:../../configs/biome-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../configs/typescript-config
+      '@repo/vitest-config':
+        specifier: workspace:*
+        version: link:../../configs/vitest-config
+      '@testing-library/react':
+        specifier: ^16.3.2
+        version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      '@testing-library/user-event':
+        specifier: ^14.6.1
+        version: 14.6.1(@testing-library/dom@10.4.1)
+      '@types/react':
+        specifier: 19.2.14
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: 19.2.3
+        version: 19.2.3(@types/react@19.2.14)
+      react:
+        specifier: 19.2.6
+        version: 19.2.6
+      react-dom:
+        specifier: 19.2.6
+        version: 19.2.6(react@19.2.6)
+      typescript:
+        specifier: 6.0.3
+        version: 6.0.3
+      vitest:
+        specifier: 3.2.4
+        version: 3.2.4(@types/node@20.19.39)(jiti@2.7.0)(jsdom@29.1.1)(lightningcss@1.32.0)(yaml@2.8.4)
+
+  packages/ui/providers:
+    devDependencies:
+      '@repo/biome-config':
+        specifier: workspace:*
+        version: link:../../configs/biome-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../configs/typescript-config
+      '@repo/vitest-config':
+        specifier: workspace:*
+        version: link:../../configs/vitest-config
+      '@testing-library/react':
+        specifier: ^16.3.2
+        version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      '@testing-library/user-event':
+        specifier: ^14.6.1
+        version: 14.6.1(@testing-library/dom@10.4.1)
+      '@types/react':
+        specifier: 19.2.14
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: 19.2.3
+        version: 19.2.3(@types/react@19.2.14)
+      react:
+        specifier: 19.2.6
+        version: 19.2.6
+      react-dom:
+        specifier: 19.2.6
+        version: 19.2.6(react@19.2.6)
       typescript:
         specifier: 6.0.3
         version: 6.0.3

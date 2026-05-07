@@ -19,8 +19,8 @@
 		"storybook": "turbo run dev --filter=storybook",
 		"storybook:build": "turbo run build --filter=storybook",
 		"storybook:test": "turbo run test --filter=storybook",
-		"shadcn:init": "turbo run shadcn:init --filter=@repo/ui",
-		"shadcn:add": "turbo run shadcn:add --filter=@repo/ui --",
+		"shadcn:init": "turbo run shadcn:init --filter=@repo/ui-components --",
+		"shadcn:add": "turbo run shadcn:add --filter=@repo/ui-components --",
 		"clean": "turbo run clean && rm -rf node_modules",
 		"prepare": "husky"
 	},

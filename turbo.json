@@ -22,22 +22,46 @@
 		},
 		"web#lint": {},
 		"storybook#lint": {},
-		"@repo/ui#lint": {},
+		"@repo/ui-components#lint": {},
+		"@repo/shared-utils#lint": {},
+		"@repo/shared-types#lint": {},
+		"@repo/ui-hooks#lint": {},
+		"@repo/ui-providers#lint": {},
 		"web#format:check": {},
 		"storybook#format:check": {},
-		"@repo/ui#format:check": {},
+		"@repo/ui-components#format:check": {},
+		"@repo/shared-utils#format:check": {},
+		"@repo/shared-types#format:check": {},
+		"@repo/ui-hooks#format:check": {},
+		"@repo/ui-providers#format:check": {},
 		"web#format": {
 			"cache": false
 		},
 		"storybook#format": {
 			"cache": false
 		},
-		"@repo/ui#format": {
+		"@repo/ui-components#format": {
+			"cache": false
+		},
+		"@repo/shared-utils#format": {
+			"cache": false
+		},
+		"@repo/shared-types#format": {
+			"cache": false
+		},
+		"@repo/ui-hooks#format": {
+			"cache": false
+		},
+		"@repo/ui-providers#format": {
 			"cache": false
 		},
 		"web#check": {},
 		"storybook#check": {},
-		"@repo/ui#check": {},
+		"@repo/ui-components#check": {},
+		"@repo/shared-utils#check": {},
+		"@repo/shared-types#check": {},
+		"@repo/ui-hooks#check": {},
+		"@repo/ui-providers#check": {},
 		"test": {
 			"dependsOn": ["^build"],
 			"outputs": []
@@ -49,11 +73,11 @@
 			"cache": false,
 			"persistent": true
 		},
-		"@repo/ui#shadcn:init": {
+		"@repo/ui-components#shadcn:init": {
 			"cache": false,
 			"interactive": true
 		},
-		"@repo/ui#shadcn:add": {
+		"@repo/ui-components#shadcn:add": {
 			"cache": false,
 			"interactive": true
 		}
