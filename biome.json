@@ -1,5 +1,8 @@
 {
-    "extends": [
-        "biome-config"
-    ]
+  "extends": ["@repo/biome-config"],
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  }
 }

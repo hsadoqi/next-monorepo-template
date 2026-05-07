@@ -1,17 +1,17 @@
 {
-    "name": "vitest-config",
-    "version": "1.0.0",
-    "type": "module",
-    "private": true,
-    "description": "Shared Vitest configuration",
-    "exports": {
-        "./base": "./base.ts"
-    },
-    "devDependencies": {
-        "vitest": "^3.0.5",
-        "typescript": "^5.7.3"
-    },
-    "peerDependencies": {
-        "vitest": "^3.0.0"
-    }
+  "name": "@repo/vitest-config",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "Shared Vitest configuration",
+  "exports": {
+    "./base": "./base.ts"
+  },
+  "devDependencies": {
+    "vitest": "^3.0.5",
+    "typescript": "^5.7.3"
+  },
+  "peerDependencies": {
+    "vitest": "^3.0.0"
+  }
 }
