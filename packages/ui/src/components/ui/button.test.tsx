@@ -10,8 +10,8 @@ describe("Button", () => {
 
 		const button = screen.getByRole("button", { name: "Save changes" });
 		expect(button).toBeDefined();
-		expect(button).toHaveProperty("class", "bg-primary");
-		expect(button).toHaveProperty("class", "text-primary-foreground");
+		expect(button).toHaveClass("bg-primary");
+		expect(button).toHaveClass("text-primary-foreground");
 	});
 
 	it("calls click handlers for enabled buttons", async () => {
@@ -46,8 +46,8 @@ describe("Button", () => {
 		);
 
 		const link = screen.getByRole("link", { name: "Contact" });
-		expect(link).toHaveProperty("href", "/contact");
-		expect(link).toHaveProperty("class", "inline-flex");
+		expect(link).toHaveAttribute("href", "/contact");
+		expect(link).toHaveClass("inline-flex");
 	});
 
 	it("generates variant and size classes", () => {

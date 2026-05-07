@@ -13,8 +13,7 @@ describe("Home", () => {
 		expect(
 			screen.getByText("Powered by Next.js, Tailwind CSS v4, Biome, and Shadcn UI."),
 		).toBeDefined();
-		expect(screen.getByRole("button", { name: "This is a Shadcn Button!" })).toHaveProperty(
-			"class",
+		expect(screen.getByRole("button", { name: "This is a Shadcn Button!" })).toHaveClass(
 			"bg-primary",
 		);
 	});
