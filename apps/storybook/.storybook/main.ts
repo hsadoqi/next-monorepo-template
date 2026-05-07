@@ -6,12 +6,12 @@ const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const config: StorybookConfig = {
 	stories: [
-		"../src/**/*.mdx",
-		"../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-		"../../web/**/*.mdx",
+		// "../src/**/*.mdx",
+		// "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+		// "../../web/**/*.mdx",
 		"../../web/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-		"../../../packages/ui/**/*.mdx",
-		"../../../packages/ui/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+		// "../../../packages/ui/**/*.mdx",
+		"../../../packages/ui/components/src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
 	],
 	addons: ["@storybook/addon-links", "@storybook/addon-docs", "@storybook/addon-a11y"],
 	framework: {
@@ -27,8 +27,8 @@ const config: StorybookConfig = {
 		config.resolve.alias = {
 			...(config.resolve.alias ?? {}),
 			"@": path.resolve(dirname, "../../web"),
-			"@repo/ui/components": path.resolve(dirname, "../../../packages/ui/src/components"),
-			"@repo/ui/lib": path.resolve(dirname, "../../../packages/ui/src/lib"),
+			"@repo/ui-components": path.resolve(dirname, "../../../packages/ui/components/src"),
+			"@repo/ui-components/lib": path.resolve(dirname, "../../../packages/ui/components/src/lib"),
 		};
 		return config;
 	},

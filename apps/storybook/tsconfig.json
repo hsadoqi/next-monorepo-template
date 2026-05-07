@@ -5,8 +5,8 @@
 		"types": ["node"],
 		"paths": {
 			"@/*": ["../web/*"],
-			"@repo/ui": ["../../packages/ui/src/index.ts"],
-			"@repo/ui/*": ["../../packages/ui/src/*"]
+			"@repo/ui-components": ["../../packages/ui/components/src/index.ts"],
+			"@repo/ui-components/*": ["../../packages/ui/components/src/*"]
 		}
 	},
 	"include": [

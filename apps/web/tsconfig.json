@@ -15,7 +15,8 @@
 		"types": ["node"],
 		"paths": {
 			"@/*": ["./*"],
-			"@repo/ui/*": ["../../packages/ui/src/*"]
+			"@repo/ui-components/*": ["../../packages/ui/components/src/*"],
+			"@repo/ui-hooks": ["../../packages/ui/hooks/src/*"]
 		}
 	},
 	"include": [
