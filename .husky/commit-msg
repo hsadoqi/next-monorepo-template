@@ -1,1 +1,0 @@
-sed -i '' '/^Co-authored-by: GitHub Copilot/Id' "$1"
