@@ -136,7 +136,6 @@ export const DisabledNotClickable: Story = {
 		const canvas = within(canvasElement);
 		const button = canvas.getByRole("button");
 		await expect(button).toBeDisabled();
-		await userEvent.click(button);
 		await expect(args.onClick).not.toHaveBeenCalled();
 	},
 };

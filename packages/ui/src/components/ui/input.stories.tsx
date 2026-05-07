@@ -46,7 +46,7 @@ export const Search: Story = {
 };
 
 export const File: Story = {
-	args: { type: "file" },
+	args: { type: "file", "aria-label": "Upload file" },
 };
 
 // ─── States ──────────────────────────────────────────────────────────────────
