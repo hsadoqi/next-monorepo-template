@@ -9,6 +9,7 @@
 		"format": "pnpm exec biome check --write .",
 		"format:check": "pnpm exec biome check .",
 		"check": "tsc --noEmit",
+		"test": "start-server-and-test \"storybook dev -p 6006 --ci --no-open\" http://127.0.0.1:6006 \"test-storybook --url http://127.0.0.1:6006 --index-json --failOnConsole\"",
 		"clean": "rm -rf storybook-static .next .turbo node_modules"
 	},
 	"dependencies": {
@@ -25,9 +26,13 @@
 		"@storybook/addon-docs": "10.3.6",
 		"@storybook/addon-links": "10.3.6",
 		"@storybook/react-vite": "10.3.6",
+		"@storybook/test-runner": "^0.24.3",
 		"@types/node": "^20",
 		"@types/react": "19.2.14",
 		"@types/react-dom": "19.2.3",
+		"axe-playwright": "^2.2.2",
+		"playwright": "^1.59.1",
+		"start-server-and-test": "^3.0.2",
 		"storybook": "10.3.6",
 		"typescript": "6.0.3"
 	}

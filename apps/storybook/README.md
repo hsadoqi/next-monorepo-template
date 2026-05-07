@@ -21,6 +21,7 @@ Storybook 10 component explorer for the monorepo. Discovers stories co-located a
 | `lint` | `biome check .` |
 | `format` | `biome check --write .` |
 | `check` | `tsc --noEmit` |
+| `test` | Start Storybook and run play-function + axe accessibility checks in Chromium |
 | `clean` | Remove `storybook-static/`, `.next/`, `.turbo/`, `node_modules/` |
 
 From repo root:
@@ -28,6 +29,7 @@ From repo root:
 ```bash
 pnpm storybook              # start dev server
 pnpm storybook:build        # static build
+pnpm storybook:test         # interaction + accessibility checks
 ```
 
 ## Project Layout
@@ -101,6 +103,16 @@ export const ClickInteraction: Story = {
 
 `preview.ts` includes a custom `Theme` global with Light / Dark options. When Dark is selected, `.dark` is toggled on `document.documentElement` and on `.docs-story` (for Docs page previews). The theme respects shadcn's `@custom-variant dark (&:is(.dark, .dark *))` CSS selector.
 
+## Interaction and accessibility tests
+
+`pnpm storybook:test` starts Storybook locally, waits for `http://127.0.0.1:6006`, then runs `test-storybook` in Chromium. Story `play` functions exercise interactions, and `.storybook/test-runner.ts` injects axe into every story and fails on accessibility violations.
+
+In CI, Playwright Chromium is installed before `pnpm test` runs. Locally, install it once with:
+
+```bash
+pnpm --filter=storybook exec playwright install chromium
+```
+
 ## Styling
 
 `preview.ts` imports `./src/styles/globals.css`, which in turn imports `@repo/tailwind-config`. This provides Tailwind v4 design tokens (CSS variables for colors, radii, etc.) to all stories. Components from `@repo/ui` use these tokens via `var(--*)` CSS variables, so they render correctly inside Storybook.
@@ -131,7 +143,7 @@ The `storybook` (dev) task is marked `cache: false, persistent: true` in the roo
 
 - **UniversalStore dev warnings** (`No existing state found for follower`): Known Storybook 10 race condition in manager/preview handshake. Cosmetic — no rendering impact. Tracked upstream; expected to resolve with `@storybook/addon-test` stable v10.
 - **Framework choice**: Storybook uses `@storybook/react-vite` for reliable Vite builds in this workspace. Re-test `pnpm storybook:build` before switching back to a Next-specific Storybook preset.
-- **`@storybook/addon-test`**: Not installed — no stable v10 release. Use built-in `storybook/test` utilities for interaction tests instead.
+- **`@storybook/addon-test`**: Not installed — no stable v10 release. Use built-in `storybook/test` utilities for interaction tests and `@storybook/test-runner` for browser execution.
 - **Biome CSS warnings** on `@theme`, `@apply`, `@source`: Biome's CSS parser doesn't recognise Tailwind v4 at-rules. Not real errors.
 
 ## Potential future work
@@ -140,4 +152,3 @@ The `storybook` (dev) task is marked `cache: false, persistent: true` in the roo
 - Add `@storybook/addon-test` once a stable Storybook 10 release ships
 - Add MSW (`msw-storybook-addon`) for API mocking in stories
 - Add a `parameters.viewport` preset for responsive story previews
-- Configure Storybook's accessibility checks to fail CI on violations
