@@ -25,6 +25,7 @@ Run from this directory (`apps/web/`) or from the repo root with `--filter=web`.
 | `lint` | `biome check .` |
 | `format` | `biome check --write .` |
 | `check` | `tsc --noEmit` — type-check only |
+| `test` | `vitest run` — jsdom unit/component tests |
 | `clean` | Remove `.next/`, `.turbo/`, `node_modules/` |
 
 ## Project Layout
