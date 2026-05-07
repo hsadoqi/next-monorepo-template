@@ -1,6 +1,7 @@
 {
 	"name": "@repo/ui",
 	"version": "1.0.0",
+	"type": "module",
 	"description": "Shared UI components",
 	"exports": {
 		".": "./src/index.ts",
@@ -11,7 +12,9 @@
 	"scripts": {
 		"lint": "pnpm exec biome check .",
 		"format": "pnpm exec biome check --write .",
+		"format:check": "pnpm exec biome check .",
 		"check": "tsc --noEmit",
+		"test": "vitest run",
 		"shadcn:init": "pnpm dlx shadcn@latest init",
 		"shadcn:add": "pnpm dlx shadcn@latest add",
 		"clean": "rm -rf .turbo node_modules"
@@ -27,13 +30,15 @@
 		"@repo/biome-config": "workspace:*",
 		"@repo/tailwind-config": "workspace:*",
 		"@repo/typescript-config": "workspace:*",
+		"@repo/vitest-config": "workspace:*",
 		"@storybook/react": "10.3.6",
 		"storybook": "10.3.6",
-		"@types/react": "^19.2.14",
-		"@types/react-dom": "^19.2.3",
-		"react": "19.2.4",
-		"react-dom": "19.2.4",
-		"tailwindcss": "^4.2.4",
-		"typescript": "^6.0.3"
+		"@types/react": "19.2.14",
+		"@types/react-dom": "19.2.3",
+		"react": "19.2.6",
+		"react-dom": "19.2.6",
+		"tailwindcss": "4.2.4",
+		"typescript": "^6.0.3",
+		"vitest": "3.2.4"
 	}
 }

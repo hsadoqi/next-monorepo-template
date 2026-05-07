@@ -1,6 +1,6 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import type { StorybookConfig } from "@storybook/nextjs-vite";
+import type { StorybookConfig } from "@storybook/react-vite";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -15,7 +15,7 @@ const config: StorybookConfig = {
 	],
 	addons: ["@storybook/addon-links", "@storybook/addon-docs", "@storybook/addon-a11y"],
 	framework: {
-		name: "@storybook/nextjs-vite",
+		name: "@storybook/react-vite",
 		options: {},
 	},
 	core: {

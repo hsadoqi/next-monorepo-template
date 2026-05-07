@@ -8,13 +8,13 @@
 		"build": {
 			"dependsOn": ["^build"],
 			"inputs": ["$TURBO_DEFAULT$", "!**/*.stories.{tsx,jsx,mdx}"],
-			"outputs": [".next/**", "!.next/cache/**", "storybook-static/**"]
+			"outputs": []
 		},
 		"storybook#build": {
 			"outputs": ["storybook-static/**"]
 		},
 		"web#build": {
-			"outputs": [".next/**"]
+			"outputs": [".next/**", "!.next/cache/**"]
 		},
 		"web#dev": {
 			"cache": false,
@@ -22,6 +22,9 @@
 		},
 		"web#lint": {},
 		"@repo/ui#lint": {},
+		"web#format:check": {},
+		"storybook#format:check": {},
+		"@repo/ui#format:check": {},
 		"web#format": {
 			"cache": false
 		},
@@ -34,6 +37,10 @@
 		"web#check": {},
 		"storybook#check": {},
 		"@repo/ui#check": {},
+		"test": {
+			"dependsOn": ["^build"],
+			"outputs": []
+		},
 		"storybook#dev": {
 			"cache": false,
 			"persistent": true

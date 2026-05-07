@@ -31,7 +31,7 @@ A production-ready monorepo template built with [Turborepo](https://turbo.build/
 | Monorepo runner | Turborepo v2 |
 | Web framework | Next.js 16 + React 19 |
 | Styling | Tailwind CSS v4 + shadcn/ui |
-| Component explorer | Storybook 10 (`@storybook/nextjs-vite`) |
+| Component explorer | Storybook 10 (`@storybook/react-vite`) |
 | Language | TypeScript 6 (strict) |
 | Lint + format | Biome v2 |
 | Git hooks | Husky v9 + lint-staged v17 |
@@ -82,7 +82,7 @@ The primary consumer of `@repo/ui`. Uses App Router. Imports shared Tailwind sty
 
 ### `apps/storybook` — Component explorer
 
-Runs Storybook 10 with `@storybook/nextjs-vite`. Discovers stories co-located in `packages/ui/**` and `apps/web/**`. Includes dark mode toolbar, a11y addon, and autodocs. See [apps/storybook/README.md](apps/storybook/README.md).
+Runs Storybook 10 with `@storybook/react-vite`. Discovers stories co-located in `packages/ui/**` and `apps/web/**`. Includes dark mode toolbar, a11y addon, and autodocs. See [apps/storybook/README.md](apps/storybook/README.md).
 
 ### `packages/ui` — Shared component library
 
@@ -131,6 +131,7 @@ Two GitHub Actions workflows run on push/PR to `main`:
 ## Caveats
 
 - **Storybook UniversalStore warnings** in dev mode (`No existing state found for follower`): Known Storybook 10 race condition. Doesn't affect rendering or builds. Will resolve once `@storybook/addon-test` ships a stable v10 release.
+- **Storybook framework**: This workspace uses `@storybook/react-vite` instead of the Next-specific Vite preset because the current `@storybook/nextjs-vite` preset pulls a CommonJS plugin path that is incompatible with ESM-only Vite dependencies.
 - **Biome CSS `@theme`/`@apply` warnings**: Biome's CSS parser doesn't recognise Tailwind v4 custom at-rules. Warnings are cosmetic — builds pass.
 - **`pnpm install` peer warnings**: `@storybook/react` requires `storybook@^10` as a peer. Both are installed; pnpm surfaces this as a non-fatal warning.
 

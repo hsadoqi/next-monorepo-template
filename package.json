@@ -3,14 +3,19 @@
 	"version": "1.0.0",
 	"description": "",
 	"private": true,
+	"engines": {
+		"node": "^20.9.0 || >=22.0.0",
+		"pnpm": ">=10.0.0"
+	},
 	"scripts": {
 		"dev": "turbo run dev",
 		"build": "turbo run build",
 		"lint": "turbo run lint",
 		"format": "turbo run format",
+		"format:check": "turbo run format:check",
 		"check": "turbo run check",
 		"lint:staged": "lint-staged",
-		"test": "echo \"No test tasks configured yet\"",
+		"test": "turbo run test",
 		"storybook": "turbo run dev --filter=storybook",
 		"storybook:build": "turbo run build --filter=storybook",
 		"shadcn:init": "turbo run shadcn:init --filter=@repo/ui",
@@ -31,6 +36,17 @@
 		"typescript": "^6.0.3"
 	},
 	"pnpm": {
+		"overrides": {
+			"@types/react": "19.2.14",
+			"@types/react-dom": "19.2.3",
+			"next": "16.2.5",
+			"react": "19.2.6",
+			"react-dom": "19.2.6",
+			"storybook": "10.3.6",
+			"tailwindcss": "4.2.4",
+			"typescript": "6.0.3",
+			"vitest": "3.2.4"
+		},
 		"onlyBuiltDependencies": [
 			"esbuild"
 		]

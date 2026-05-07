@@ -12,6 +12,7 @@ These rules apply to all AI coding agents working in this monorepo.
 ## Stack Baseline
 
 - Package manager: pnpm workspaces (`pnpm@10.x`)
+- Runtime: Node.js 20 LTS or 22+; avoid Node 21 because installed tooling such as Vitest does not support it.
 - Monorepo runner: Turborepo (`turbo@2.x`)
 - TypeScript: strict mode (`typescript@6.x`)
 - Formatter/linter: Biome (`@biomejs/biome@2.x`)
@@ -24,6 +25,8 @@ These rules apply to all AI coding agents working in this monorepo.
 - Shared configs live under `packages/configs/*`.
 - Shared UI lives under `packages/ui`.
 - Run installs from the repository root, not nested apps.
+- Root scripts should delegate to package tasks through `turbo run`; put actual task logic in each package.
+- Keep package-specific Turbo outputs on package tasks such as `web#build` and `storybook#build`, not broad generic tasks.
 
 ## TypeScript Rules
 
@@ -46,15 +49,30 @@ These rules apply to all AI coding agents working in this monorepo.
 - Keep majors aligned with the current stack unless migration is explicitly requested.
 - Use `pnpm add` from the correct workspace scope.
 - Avoid adding duplicate tooling that overlaps existing stack responsibilities.
+- Keep shared runtime/tooling versions aligned across packages. Update root `pnpm.overrides` when changing React, Next.js, TypeScript, Storybook, Tailwind CSS, Vitest, or shared `@types/*` versions.
+- Do not introduce duplicate React or React DOM versions in workspace packages.
+- If a transitive package needs an override to keep the build working, document why in `package.json` or the relevant PR notes.
+
+## Build Reproducibility Rules
+
+- Builds must pass without fetching runtime assets from the network.
+- Do not use `next/font/google` unless fonts are vendored locally or the build environment is explicitly allowed to fetch them.
+- Prefer local assets, checked-in public assets, or CSS fallback stacks for baseline app typography.
+
+## CI And Validation Rules
+
+- CI should use non-mutating check scripts such as `format:check`; reserve `format` for local write/fix flows.
+- Add new validation tasks as package tasks first, register them in `turbo.json`, then delegate from root scripts.
 
 ## Validation Before Finishing
 
 Run from repo root when relevant:
 
 1. `pnpm install`
-2. `pnpm run format`
+2. `pnpm run format:check`
 3. `pnpm run lint`
 4. `pnpm run check`
-5. `pnpm run build`
+5. `pnpm run test`
+6. `pnpm run build`
 
 Only leave failing checks when explicitly approved by the user.

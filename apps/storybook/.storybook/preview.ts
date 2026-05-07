@@ -1,6 +1,6 @@
 import "../src/styles/globals.css";
 
-import type { Decorator, Preview } from "@storybook/nextjs-vite";
+import type { Decorator, Preview } from "@storybook/react-vite";
 
 // Toggles the `dark` class on <html> to activate Tailwind's class-based dark mode
 // and trigger `.dark { ... }` CSS variable overrides from shared-styles.css.

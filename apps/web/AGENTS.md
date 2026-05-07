@@ -11,6 +11,7 @@ This is not legacy Next.js behavior. Before implementing framework-level changes
 - Follow deprecations and migration guidance for Next 16 and React 19.
 - Prefer App Router patterns and current conventions.
 - Avoid deprecated APIs/patterns from older Next versions.
+- Keep production builds reproducible. Do not add `next/font/google` unless fonts are vendored locally or network access is explicitly guaranteed in CI.
 
 ## shadcn/ui Rules
 
@@ -22,9 +23,10 @@ This is not legacy Next.js behavior. Before implementing framework-level changes
 
 From repo root, run:
 
-1. `pnpm run format`
+1. `pnpm run format:check`
 2. `pnpm run lint`
 3. `pnpm run check`
-4. `pnpm run build`
+4. `pnpm run test`
+5. `pnpm run build`
 
 <!-- END:nextjs-agent-rules -->

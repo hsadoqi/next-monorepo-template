@@ -5,16 +5,16 @@
 	"private": true,
 	"description": "Shared Vitest configuration",
 	"exports": {
-		"./base": "./base.ts"
+		"./base": "./base.js"
 	},
 	"devDependencies": {
-		"vitest": "^3.0.5",
-		"typescript": "^5.7.3"
+		"vitest": "3.2.4",
+		"typescript": "6.0.3"
 	},
 	"scripts": {
 		"clean": "rm -rf .turbo node_modules"
 	},
 	"peerDependencies": {
-		"vitest": "^3.0.0"
+		"vitest": "^3.2.0"
 	}
 }

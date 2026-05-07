@@ -7,7 +7,7 @@ Storybook 10 component explorer for the monorepo. Discovers stories co-located a
 | Layer | Technology |
 |---|---|
 | Storybook | v10.3.6 |
-| Framework | `@storybook/nextjs-vite` (Vite-powered, full Next.js compat) |
+| Framework | `@storybook/react-vite` |
 | Addons | `@storybook/addon-docs`, `@storybook/addon-a11y`, `@storybook/addon-links` |
 | Test utilities | `storybook/test` (built-in `fn`, `userEvent`, `within`, `expect`) |
 | Styling | Tailwind CSS v4 via `@repo/tailwind-config` |
@@ -123,13 +123,14 @@ declare module "*.css" {
 
 ## Turborepo integration
 
-`turbo.json` registers `build:storybook` as a cacheable task with `storybook-static/**` as output. The root `pnpm storybook:build` runs `turbo run build:storybook --filter=@repo/storybook`.
+`turbo.json` registers `storybook#build` as a cacheable task with `storybook-static/**` as output. The root `pnpm storybook:build` runs `turbo run build --filter=storybook`.
 
 The `storybook` (dev) task is marked `cache: false, persistent: true` in the root `turbo.json` so Turborepo doesn't try to cache a long-running server process.
 
 ## Known issues / caveats
 
 - **UniversalStore dev warnings** (`No existing state found for follower`): Known Storybook 10 race condition in manager/preview handshake. Cosmetic — no rendering impact. Tracked upstream; expected to resolve with `@storybook/addon-test` stable v10.
+- **Framework choice**: Storybook uses `@storybook/react-vite` for reliable Vite builds in this workspace. Re-test `pnpm storybook:build` before switching back to a Next-specific Storybook preset.
 - **`@storybook/addon-test`**: Not installed — no stable v10 release. Use built-in `storybook/test` utilities for interaction tests instead.
 - **Biome CSS warnings** on `@theme`, `@apply`, `@source`: Biome's CSS parser doesn't recognise Tailwind v4 at-rules. Not real errors.
 

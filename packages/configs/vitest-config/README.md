@@ -6,7 +6,7 @@ Shared [Vitest](https://vitest.dev/) base configuration for the monorepo. Packag
 
 | Export | File |
 |---|---|
-| `@repo/vitest-config/base` | `base.ts` |
+| `@repo/vitest-config/base` | `base.js` |
 
 ## Usage
 
@@ -32,13 +32,13 @@ export default mergeConfig(baseConfig, {
 
 ## Current status
 
-No workspace package currently has unit tests configured. The `test` script in the root `package.json` returns early:
+`packages/ui` is wired to this config with a small baseline unit test. Add new package tests using the same package-task pattern.
 
 ```bash
-pnpm test  # → "No test tasks configured yet"
+pnpm test
 ```
 
-This config package is scaffolded and ready to use but is not yet wired into any Turborepo task pipeline.
+The root `test` script delegates to `turbo run test`.
 
 ## Adding tests to a package
 
@@ -69,9 +69,9 @@ describe("cn", () => {
 
 ## Caveats
 
-- Vitest v3 requires `vitest` to be installed as a direct devDependency in each consuming package (peer dep). This package declares `vitest@^3.0.0` as a peer.
+- Vitest v3 requires `vitest` to be installed as a direct devDependency in each consuming package (peer dep). This package declares `vitest@^3.2.0` as a peer.
 - For React component tests, install `@testing-library/react` and `@testing-library/user-event` in the consuming package. The base config does not include these.
-- The `base.ts` file is TypeScript (`.ts`), not `.js`. Vitest resolves it correctly at runtime, but TypeScript strict mode requires the consuming `tsconfig.json` to include it in `paths` or `include`.
+- The shared config is exported as plain ESM JavaScript so Vitest config files can import it directly across workspace package boundaries without a TypeScript loader.
 
 ## Potential future work
 
