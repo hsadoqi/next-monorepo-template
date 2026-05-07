@@ -9,9 +9,10 @@ describe("Input", () => {
 		render(<Input aria-label="Email" type="email" placeholder="name@example.com" />);
 
 		const input = screen.getByRole("textbox", { name: "Email" });
-		expect(input).toHaveAttribute("type", "email");
-		expect(input).toHaveAttribute("placeholder", "name@example.com");
-		expect(input).toHaveClass("border-input", "focus-visible:ring-ring/20");
+		expect(input).toHaveProperty("type", "email");
+		expect(input).toHaveProperty("placeholder", "name@example.com");
+		expect(input).toHaveProperty("class", "border-input");
+		expect(input).toHaveProperty("class", "focus-visible:ring-ring/20");
 	});
 
 	it("accepts typed input", async () => {
@@ -21,15 +22,15 @@ describe("Input", () => {
 		const input = screen.getByRole("searchbox", { name: "Search" });
 		await user.type(input, "portfolio");
 
-		expect(input).toHaveValue("portfolio");
+		expect(input.nodeValue).toEqual("portfolio");
 	});
 
 	it("supports disabled and invalid states", () => {
 		render(<Input aria-label="Username" aria-invalid="true" disabled />);
 
 		const input = screen.getByLabelText("Username");
-		expect(input).toBeDisabled();
-		expect(input).toHaveAttribute("aria-invalid", "true");
-		expect(input).toHaveClass("aria-invalid:border-destructive");
+		expect(input).toHaveProperty("disabled", true);
+		expect(input).toHaveProperty("aria-invalid", "true");
+		expect(input).toHaveProperty("class", "aria-invalid:border-destructive");
 	});
 });

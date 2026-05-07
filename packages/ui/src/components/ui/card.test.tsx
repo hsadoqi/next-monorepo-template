@@ -16,17 +16,26 @@ describe("Card", () => {
 			</Card>,
 		);
 
-		expect(screen.getByLabelText("Project summary")).toHaveClass("rounded-xl", "border", "bg-card");
-		expect(screen.getByText("Portfolio refresh")).toHaveClass("font-semibold");
-		expect(screen.getByText("Current sprint status")).toHaveClass("text-muted-foreground");
-		expect(screen.getByText("Three tasks are ready for review.")).toHaveClass("p-6");
-		expect(screen.getByText("Updated today")).toHaveClass("flex", "items-center");
+		expect(screen.getByLabelText("Project summary")).toHaveProperty("class", "rounded-xl");
+		expect(screen.getByLabelText("Project summary")).toHaveProperty("class", "border");
+		expect(screen.getByLabelText("Project summary")).toHaveProperty("class", "bg-card");
+		expect(screen.getByText("Portfolio refresh")).toHaveProperty("class", "font-semibold");
+		expect(screen.getByText("Current sprint status")).toHaveProperty(
+			"class",
+			"text-muted-foreground",
+		);
+		expect(screen.getByText("Three tasks are ready for review.")).toHaveProperty("class", "p-6");
+		expect(screen.getByText("Updated today")).toHaveProperty("class", "flex");
+		expect(screen.getByText("Updated today")).toHaveProperty("class", "items-center");
 	});
 
 	it("merges custom classes without dropping base styles", () => {
 		render(<Card className="w-80 shadow-none">Content</Card>);
 
 		const card = screen.getByText("Content");
-		expect(card).toHaveClass("w-80", "shadow-none", "rounded-xl", "border");
+		expect(card).toHaveProperty("class", "w-80");
+		expect(card).toHaveProperty("class", "shadow-none");
+		expect(card).toHaveProperty("class", "rounded-xl");
+		expect(card).toHaveProperty("class", "border");
 	});
 });

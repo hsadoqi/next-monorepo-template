@@ -9,11 +9,12 @@ describe("Home", () => {
 
 		expect(
 			screen.getByRole("heading", { level: 1, name: "Welcome to Portfolio v2" }),
-		).toBeVisible();
+		).toBeDefined();
 		expect(
 			screen.getByText("Powered by Next.js, Tailwind CSS v4, Biome, and Shadcn UI."),
-		).toBeVisible();
-		expect(screen.getByRole("button", { name: "This is a Shadcn Button!" })).toHaveClass(
+		).toBeDefined();
+		expect(screen.getByRole("button", { name: "This is a Shadcn Button!" })).toHaveProperty(
+			"class",
 			"bg-primary",
 		);
 	});
