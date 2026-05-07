@@ -1,6 +1,6 @@
 # Next.js Monorepo Template
 
-A production-ready monorepo template built with [Turborepo](https://turbo.build/repo) and [pnpm workspaces](https://pnpm.io/workspaces). Ships with a shared design system (shadcn/ui + Tailwind CSS v4), Storybook, strict TypeScript, Biome for linting/formatting, Husky pre-commit hooks, and GitHub Actions CI out of the box.
+A production-ready monorepo template built with [Turborepo](https://turbo.build/repo) and [pnpm workspaces](https://pnpm.io/workspaces). Ships with a shared design system (shadcn/ui + Tailwind CSS v4), Storybook interaction/accessibility checks, strict TypeScript, Vitest, Biome for linting/formatting, Husky hooks, and GitHub Actions CI out of the box.
 
 ## Repository Structure
 
@@ -60,9 +60,12 @@ Run all scripts from the repo root — Turborepo fans them out to each workspace
 | `pnpm build` | Production build (Next.js) |
 | `pnpm storybook` | Start Storybook dev server on :6006 |
 | `pnpm storybook:build` | Static Storybook build |
+| `pnpm storybook:test` | Storybook play-function and axe accessibility checks |
 | `pnpm lint` | Biome lint across all packages |
 | `pnpm format` | Biome auto-format across all packages |
+| `pnpm format:check` | Non-mutating Biome check for CI |
 | `pnpm check` | TypeScript type-check across all packages |
+| `pnpm test` | Workspace tests: Vitest plus Storybook browser checks |
 | `pnpm clean` | Delete all build artifacts and `node_modules` |
 | `pnpm shadcn:add -- <component>` | Add a shadcn component to `@repo/ui` |
 
@@ -102,7 +105,7 @@ Base TypeScript configs for different environments (`base.json`, `nextjs.json`).
 
 ### `packages/configs/vitest-config` — Shared Vitest config
 
-Base Vitest configuration for unit tests. Currently unused (no test tasks configured). See [packages/configs/vitest-config/README.md](packages/configs/vitest-config/README.md).
+Base Vitest configuration for unit and component tests. Used by `packages/ui` and `apps/web`. See [packages/configs/vitest-config/README.md](packages/configs/vitest-config/README.md).
 
 ## Adding a new app or package
 
@@ -125,7 +128,7 @@ Components are added to `packages/ui/src/components/ui/`. Export them from `pack
 
 Two GitHub Actions workflows run on push/PR to `main`:
 
-- **CI** (`.github/workflows/ci.yml`): `lint → check → build` with Turborepo remote-cache-ready setup.
+- **CI** (`.github/workflows/ci.yml`): `format:check → lint → check → test → build`, including Playwright Chromium installation for Storybook browser checks.
 - **Dependency Review** (`.github/workflows/dependency-review.yml`): Flags dependency changes with known vulnerabilities.
 
 ## Caveats
@@ -137,7 +140,7 @@ Two GitHub Actions workflows run on push/PR to `main`:
 
 ## Potential future work
 
-- Add Vitest unit tests to `packages/ui` with `@storybook/test` interaction tests wired up
+- Expand Vitest coverage as more app logic is added
 - Configure Turborepo remote caching (Vercel or self-hosted)
 - Add a `docs` app (e.g. Nextra or Starlight) consuming `@repo/ui`
 - Add Playwright E2E tests in `apps/web`
@@ -145,7 +148,7 @@ Two GitHub Actions workflows run on push/PR to `main`:
 - Add Chromatic for visual regression testing on Storybook stories
 
 - `pnpm run lint` - Lint all apps and packages
-- `pnpm run test` - Run tests workspace-wide using Vitest
+- `pnpm run test` - Run tests workspace-wide using Vitest and Storybook browser checks
 - `pnpm run check` - Typecheck the codebase
 
 ## 🛠️ Typical Workflow

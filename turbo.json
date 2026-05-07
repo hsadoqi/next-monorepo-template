@@ -21,6 +21,7 @@
 			"persistent": true
 		},
 		"web#lint": {},
+		"storybook#lint": {},
 		"@repo/ui#lint": {},
 		"web#format:check": {},
 		"storybook#format:check": {},
@@ -40,6 +41,9 @@
 		"test": {
 			"dependsOn": ["^build"],
 			"outputs": []
+		},
+		"storybook#test": {
+			"cache": false
 		},
 		"storybook#dev": {
 			"cache": false,
