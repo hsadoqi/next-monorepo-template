@@ -5,5 +5,8 @@
 	"description": "Shared Biome configuration",
 	"exports": {
 		".": "./index.json"
+	},
+	"scripts": {
+		"clean": "rm -rf .turbo node_modules"
 	}
 }

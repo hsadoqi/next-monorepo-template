@@ -5,7 +5,13 @@
 	"private": true,
 	"exports": {
 		".": "./shared-styles.css",
-		"./postcss": "./postcss.config.js"
+		"./postcss": {
+			"types": "./postcss.config.d.ts",
+			"default": "./postcss.config.js"
+		}
+	},
+	"scripts": {
+		"clean": "rm -rf .turbo node_modules"
 	},
 	"devDependencies": {
 		"postcss": "^8.5.3",
