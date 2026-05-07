@@ -1,1 +1,1 @@
-TURBO_UI=stream pnpm run lint && TURBO_UI=stream pnpm run check
+TURBO_UI=stream pnpm run lint && TURBO_UI=stream pnpm run check && TURBO_UI=stream pnpm run test
