@@ -5,7 +5,14 @@
 	"private": true,
 	"description": "Shared Vitest configuration",
 	"exports": {
-		"./base": "./base.js"
+		"./base": "./base.js",
+		"./jsdom": "./jsdom.js",
+		"./setup-dom": "./setup-dom.js"
+	},
+	"dependencies": {
+		"@testing-library/jest-dom": "^6.9.1",
+		"@vitest/coverage-v8": "^3.2.4",
+		"jsdom": "^26.1.0"
 	},
 	"devDependencies": {
 		"vitest": "3.2.4",
