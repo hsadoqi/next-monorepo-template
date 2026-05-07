@@ -8,7 +8,8 @@
 		"start": "next start",
 		"lint": "pnpm exec biome check .",
 		"format": "pnpm exec biome check --write .",
-		"check": "tsc --noEmit"
+		"check": "tsc --noEmit",
+		"clean": "rm -rf .next .turbo node_modules"
 	},
 	"dependencies": {
 		"@repo/ui": "workspace:*",
@@ -18,6 +19,7 @@
 	},
 	"devDependencies": {
 		"@repo/tailwind-config": "workspace:*",
+		"@repo/typescript-config": "workspace:*",
 		"@tailwindcss/postcss": "^4",
 		"@types/node": "^20",
 		"@types/react": "^19",
