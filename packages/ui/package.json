@@ -10,7 +10,9 @@
 	"scripts": {
 		"lint": "pnpm exec biome check .",
 		"format": "pnpm exec biome check --write .",
-		"check": "tsc --noEmit"
+		"check": "tsc --noEmit",
+		"shadcn:init": "pnpm dlx shadcn@latest init",
+		"shadcn:add": "pnpm dlx shadcn@latest add"
 	},
 	"dependencies": {
 		"@radix-ui/react-slot": "^1.2.4",

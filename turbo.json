@@ -1,23 +1,37 @@
 {
 	"$schema": "https://turbo.build/schema.json",
+    "ui": "tui",
 	"tasks": {
-		"build": {
-			"dependsOn": ["^build"],
-			"outputs": [".next/**", "dist/**"]
+        "web#build": {
+            "outputs": [
+                ".next/**"
+            ]
 		},
-		"dev": {
+        "web#dev": {
 			"cache": false,
 			"persistent": true
 		},
-		"//#format-and-lint": {},
-		"//#format-and-lint:fix": {
+                "web#lint": {},
+                "@repo/ui#lint": {},
+                "web#format": {
 			"cache": false
 		},
-		"check": {},
-		"test": {},
-		"storybook": {
+        "@repo/ui#format": {
+            "cache": false
+        },
+        "web#check": {},
+        "@repo/ui#check": {},
+        "web#storybook": {
 			"cache": false,
 			"persistent": true
+        },
+        "@repo/ui#shadcn:init": {
+            "cache": false,
+            "interactive": true
+        },
+        "@repo/ui#shadcn:add": {
+            "cache": false,
+            "interactive": true
 		}
 	}
 }

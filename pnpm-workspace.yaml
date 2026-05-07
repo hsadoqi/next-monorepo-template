@@ -1,6 +1,4 @@
 packages:
   - "apps/*"
-  - "packages/*"
   - "packages/configs/*"
-allowBuilds:
-  esbuild: false
+  - "packages/ui"

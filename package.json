@@ -4,13 +4,15 @@
 	"description": "",
 	"private": true,
 	"scripts": {
-		"dev": "turbo dev",
-		"build": "turbo build",
-		"format-and-lint": "biome check .",
-		"format-and-lint:fix": "biome check . --write",
-		"check": "turbo check",
-		"test": "turbo test",
-		"storybook": "turbo storybook"
+		"dev": "turbo run dev",
+		"build": "turbo run build",
+		"lint": "turbo run lint",
+		"format": "turbo run format",
+		"check": "turbo run check",
+		"test": "echo \"No test tasks configured yet\"",
+		"storybook": "echo \"No storybook tasks configured yet\"",
+		"shadcn:init": "turbo run shadcn:init --filter=@repo/ui",
+		"shadcn:add": "turbo run shadcn:add --filter=@repo/ui --"
 	},
 	"keywords": [],
 	"author": "Hanaa Sadoqi",
