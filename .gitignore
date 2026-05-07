@@ -60,3 +60,5 @@ pids/
 *.seed
 *.pid.lock
 
+# Developer Resources
+.private
