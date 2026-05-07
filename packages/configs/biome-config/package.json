@@ -1,9 +1,9 @@
 {
-  "name": "@repo/biome-config",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Shared Biome configuration",
-  "exports": {
-    ".": "./index.json"
-  }
+	"name": "@repo/biome-config",
+	"version": "1.0.0",
+	"private": true,
+	"description": "Shared Biome configuration",
+	"exports": {
+		".": "./index.json"
+	}
 }
