@@ -1,0 +1,21 @@
+{
+	"name": "@repo/shared-types",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "Shared TypeScript types",
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"scripts": {
+		"lint": "pnpm exec biome check .",
+		"format": "pnpm exec biome check --write .",
+		"format:check": "pnpm exec biome check .",
+		"check": "tsc --noEmit",
+		"clean": "rm -rf .turbo node_modules"
+	},
+	"devDependencies": {
+		"@repo/biome-config": "workspace:*",
+		"@repo/typescript-config": "workspace:*",
+		"typescript": "^6.0.3"
+	}
+}
