@@ -1,0 +1,13 @@
+---
+description: Repository-wide coding guidelines for this monorepo
+alwaysApply: true
+---
+
+Follow AGENTS.md as the primary policy.
+
+Additional enforcement:
+- Respect namespace conventions and keep @repo/* imports.
+- Prefer package exports and workspace imports instead of fragile relative deep imports.
+- Keep changes aligned with Next.js 16, React 19, Tailwind 4, Turbo 2, Biome 2, TypeScript 6.
+- Do not reintroduce deprecated compiler options or outdated framework APIs.
+- Validate with pnpm run format, pnpm run lint, pnpm run check, and pnpm run build from repository root.

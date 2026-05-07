@@ -1,0 +1,11 @@
+sourceOfTruth: AGENTS.md
+requirements:
+  - Keep package names and imports under @repo/*
+  - Use current installed versions and official docs over memory
+  - Do not introduce deprecated patterns, including deprecated TypeScript options like baseUrl
+  - Use Biome for formatting and linting
+validation:
+  - pnpm run format
+  - pnpm run lint
+  - pnpm run check
+  - pnpm run build
