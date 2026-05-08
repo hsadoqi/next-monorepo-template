@@ -3,18 +3,19 @@
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		"dev": "storybook dev -p 6006",
+		"dev": "storybook dev --port 6006",
 		"build": "storybook build",
 		"lint": "pnpm exec biome check .",
 		"format": "pnpm exec biome check --write .",
 		"format:check": "pnpm exec biome check .",
 		"check": "tsc --noEmit",
-		"test": "start-server-and-test \"storybook dev -p 6006 --ci --no-open\" http://127.0.0.1:6006 \"test-storybook --url http://127.0.0.1:6006 --index-json --failOnConsole\"",
+		"test": "mkdir -p .tmp && TMPDIR=$PWD/.tmp start-server-and-test \"storybook dev --port 6006 --ci --no-open\" http://127.0.0.1:6006 \"test-storybook --url http://127.0.0.1:6006 --index-json --failOnConsole --maxWorkers=1 --testTimeout=45000\"",
 		"clean": "rm -rf storybook-static .next .turbo node_modules"
 	},
 	"dependencies": {
 		"@repo/tailwind-config": "workspace:*",
 		"@repo/ui-components": "workspace:*",
+		"@repo/ui-library": "workspace:*",
 		"react": "19.2.6",
 		"react-dom": "19.2.6",
 		"tailwindcss": "^4.2.4"

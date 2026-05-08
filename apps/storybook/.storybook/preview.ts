@@ -38,6 +38,10 @@ const preview: Preview = {
 	},
 
 	parameters: {
+		a11y: {
+			// Enable per story with `tags: ["a11y"]` for focused accessibility assertions.
+			disable: true,
+		},
 		backgrounds: {
 			default: "light",
 			values: [

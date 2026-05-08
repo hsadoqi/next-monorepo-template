@@ -6,7 +6,9 @@
 		"paths": {
 			"@/*": ["../web/*"],
 			"@repo/ui-components": ["../../packages/ui/components/src/index.ts"],
-			"@repo/ui-components/*": ["../../packages/ui/components/src/*"]
+			"@repo/ui-components/*": ["../../packages/ui/components/src/*"],
+			"@repo/ui-showcase": ["../../packages/ui/component-library/src/index.ts"],
+			"@repo/ui-showcase/*": ["../../packages/ui/component-library/src/*"]
 		}
 	},
 	"include": [
@@ -14,5 +16,6 @@
 		"src/**/*",
 		"../web/**/*.stories.*",
 		"../../packages/ui/**/*.stories.*"
-	]
+	],
+	"exclude": ["**/.private/**"]
 }
