@@ -37,9 +37,18 @@ function AlertDialogOverlay({
 
 function AlertDialogContent({
 	className,
+	title,
+	description,
+	showTitle = true,
+	showDescription = true,
 	size = "default",
+	children,
 	...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Content> & {
+	title: string;
+	description: string;
+	showTitle?: boolean;
+	showDescription?: boolean;
 	size?: "default" | "sm";
 }) {
 	return (
@@ -53,7 +62,13 @@ function AlertDialogContent({
 					className,
 				)}
 				{...props}
-			/>
+			>
+				<AlertDialogTitle className={showTitle ? undefined : "sr-only"}>{title}</AlertDialogTitle>
+				<AlertDialogDescription className={showDescription ? undefined : "sr-only"}>
+					{description}
+				</AlertDialogDescription>
+				{children}
+			</AlertDialogPrimitive.Content>
 		</AlertDialogPortal>
 	);
 }
