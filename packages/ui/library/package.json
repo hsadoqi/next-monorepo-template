@@ -1,0 +1,73 @@
+{
+	"name": "@repo/ui-library",
+	"version": "1.0.0",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		},
+		"./registry": {
+			"types": "./dist/registry.d.ts",
+			"import": "./dist/registry.js"
+		},
+		"./widgets/*": {
+			"types": "./dist/widgets/*.d.ts",
+			"import": "./dist/widgets/*.js"
+		},
+		"./widgets": {
+			"types": "./dist/widgets/index.d.ts",
+			"import": "./dist/widgets/index.js"
+		},
+		"./components/*": {
+			"types": "./dist/components/*.d.ts",
+			"import": "./dist/components/*.js"
+		},
+		"./components": {
+			"types": "./dist/components/index.d.ts",
+			"import": "./dist/components/index.js"
+		},
+		"./dashboards/*": {
+			"types": "./dist/dashboards/*.d.ts",
+			"import": "./dist/dashboards/*.js"
+		},
+		"./dashboards": {
+			"types": "./dist/dashboards/index.d.ts",
+			"import": "./dist/dashboards/index.js"
+		}
+	},
+	"scripts": {
+		"build": "tsc",
+		"check": "tsc --noEmit",
+		"format": "pnpm exec biome check --write src/index.ts src/registry.ts src/registry-types.ts src/widgets/index.ts src/widgets/widget-registry.ts src/widgets/dashboard-widgets.stories.tsx src/widgets/date-time src/widgets/productivity",
+		"format:check": "pnpm exec biome check src/index.ts src/registry.ts src/registry-types.ts src/widgets/index.ts src/widgets/widget-registry.ts src/widgets/dashboard-widgets.stories.tsx src/widgets/date-time src/widgets/productivity",
+		"lint": "pnpm exec biome lint src/index.ts src/registry.ts src/registry-types.ts src/widgets/index.ts src/widgets/widget-registry.ts src/widgets/dashboard-widgets.stories.tsx src/widgets/date-time src/widgets/productivity",
+		"test": "vitest run --passWithNoTests",
+		"test:ui": "vitest --ui"
+	},
+	"dependencies": {
+		"@dnd-kit/core": "^6.3.1",
+		"@dnd-kit/sortable": "^10.0.0",
+		"@dnd-kit/utilities": "^3.2.2",
+		"@repo/ui-components": "workspace:*",
+		"lucide-react": "^0.263.1",
+		"react": "^19.2.6",
+		"react-dom": "^19.2.6",
+		"zod": "^4.4.3"
+	},
+	"devDependencies": {
+		"@repo/tailwind-config": "workspace:*",
+		"@repo/typescript-config": "workspace:*",
+		"@repo/vitest-config": "workspace:*",
+		"@storybook/react": "10.3.6",
+		"@testing-library/react": "^14.1.2",
+		"@testing-library/user-event": "^14.5.1",
+		"@types/react": "^19.2.6",
+		"@types/react-dom": "^19.2.6",
+		"react-markdown": "^10.1.0",
+		"rehype-highlight": "^7.0.2",
+		"rehype-sanitize": "^6.0.0",
+		"typescript": "^6.0.3",
+		"vitest": "^3.2.4"
+	}
+}
