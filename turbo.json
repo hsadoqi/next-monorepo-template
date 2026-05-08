@@ -37,6 +37,14 @@
 			"cache": false,
 			"persistent": true
 		},
+		"web#shadcn:init": {
+			"cache": false,
+			"interactive": true
+		},
+		"web#shadcn:add": {
+			"cache": false,
+			"interactive": true
+		},
 		"@repo/ui-components#shadcn:init": {
 			"cache": false,
 			"interactive": true

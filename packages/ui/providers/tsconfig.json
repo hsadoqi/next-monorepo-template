@@ -6,5 +6,6 @@
 		"types": ["vitest/globals"],
 		"jsx": "react-jsx"
 	},
-	"include": ["src/**/*"]
+	"include": ["src/**/*"],
+	"exclude": ["dist", "**/.private/**"]
 }

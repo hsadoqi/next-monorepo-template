@@ -4,6 +4,7 @@ requirements:
   - Use current installed versions and official docs over memory
   - Do not introduce deprecated patterns, including deprecated TypeScript options like baseUrl
   - Use Biome for formatting and linting
+  - Use latest versions, latest best practices, latest techniques
 validation:
   - pnpm run format
   - pnpm run lint

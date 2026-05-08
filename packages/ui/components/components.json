@@ -10,10 +10,10 @@
 		"cssVariables": true
 	},
 	"aliases": {
-		"components": "@repo/ui-components",
-		"utils": "@repo/ui-components/lib/utils",
-		"ui": "@repo/ui-components/ui",
-		"lib": "@repo/ui-components/lib",
-		"hooks": "@repo/ui-hooks"
+		"components": "./src/components",
+		"utils": "./src/lib/utils.ts",
+		"ui": "./src/ui",
+		"lib": "./src/lib",
+		"hooks": "./src/hooks"
 	}
 }

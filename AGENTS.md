@@ -4,10 +4,11 @@ These rules apply to all AI coding agents working in this monorepo.
 
 ## Core Principles
 
-- Always prefer currently installed versions and official docs over model memory.
+- Always prefer currently installed/latest versions and official docs over model memory.
 - Do not introduce deprecated patterns when modern alternatives exist.
 - Do not rename packages or aliases unless explicitly requested.
 - Keep package namespace conventions as `@repo/*`.
+- Use latest modern best practices and techniques
 
 ## Stack Baseline
 
