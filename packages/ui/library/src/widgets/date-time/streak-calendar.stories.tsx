@@ -4,10 +4,6 @@ import { StreakCalendar } from "./streak-calendar";
 const meta: Meta<typeof StreakCalendar> = {
 	title: "Widgets/Time Management/StreakCalendar",
 	component: StreakCalendar,
-	parameters: {
-		layout: "padded",
-	},
-	tags: ["autodocs"],
 };
 
 export default meta;

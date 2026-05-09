@@ -11,31 +11,14 @@ import {
 } from "@repo/ui-components/molecules";
 import * as React from "react";
 import { z } from "zod";
-
-export interface Entry {
-	id: string;
-	date: string; // YYYY-MM-DD
-	title?: string;
-	body: string;
-	mood?: "🙂" | "😐" | "🙁" | "🔥" | "💤";
-	energy?: "low" | "medium" | "high";
-	tags: string[];
-	createdAt: string;
-	updatedAt: string;
-}
-
-const PropsSchema = z.object({
-	title: z.string().default("Journal"),
-	enableTemplates: z.boolean().default(true),
-});
-export type JournalProps = z.infer<typeof PropsSchema>;
-
-const SettingsSchema = z.object({
-	defaultTemplate: z.enum(["daily", "retro", "standup", "blank"]).default("daily"),
-	showWeekRollup: z.boolean().default(true),
-});
-export type JournalSettings = z.infer<typeof SettingsSchema>;
-
+import {
+	type JournalProps,
+	type JournalSettings,
+	PropsSchema,
+	SettingsSchema,
+} from "./content-schemas";
+import type { Entry } from "./content-types";
+import { load, save, uid } from "./content-utils";
 export interface JournalTimelineWidgetProps {
 	widgetId: string;
 	className?: string;
@@ -44,24 +27,6 @@ export interface JournalTimelineWidgetProps {
 	initialEntries?: Entry[];
 	onUpdate?: (data: { entries: Entry[]; settings: JournalSettings }) => void;
 }
-
-const uid = () =>
-	typeof crypto !== "undefined" && "randomUUID" in crypto
-		? (crypto as any).randomUUID()
-		: Math.random().toString(36).slice(2);
-const save = (k: string, v: any) => {
-	try {
-		localStorage.setItem(k, JSON.stringify(v));
-	} catch {}
-};
-const load = <T,>(k: string, f: T): T => {
-	try {
-		const r = localStorage.getItem(k);
-		return r ? (JSON.parse(r) as T) : f;
-	} catch {
-		return f;
-	}
-};
 
 const TEMPLATES: Record<string, string> = {
 	daily: "🎯 Top 3:\n1.\n2.\n3.\n\n✅ Wins:\n- \n\n🧠 Notes:\n- ",
@@ -250,5 +215,3 @@ export default function JournalTimelineWidget({
 		</div>
 	);
 }
-
-export { PropsSchema as JournalPropsSchema, SettingsSchema as JournalSettingsSchema };

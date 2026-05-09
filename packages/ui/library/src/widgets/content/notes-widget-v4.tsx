@@ -43,6 +43,13 @@ import {
 } from "@repo/ui-components/molecules";
 import * as React from "react";
 import { z } from "zod";
+import {
+	type NotesProps,
+	NotesPropsSchema,
+	type NotesSettings,
+	NotesSettingsSchema,
+} from "./content-schemas";
+import type { Note, NoteColor } from "./content-types";
 
 // Optional markdown (lazy)
 let ReactMarkdown: any = null;
@@ -55,42 +62,6 @@ if (typeof window !== "undefined") {
 		.then((m) => (rehypeHighlight = (m as any).default || m))
 		.catch(() => {});
 }
-
-// ---------------- Types & Schemas ----------------
-
-export type NoteColor = "default" | "yellow" | "pink" | "blue" | "green" | "purple" | "gray";
-export interface Note {
-	id: string;
-	title: string;
-	body: string;
-	tags: string[];
-	color: NoteColor;
-	pinned?: boolean;
-	archived?: boolean;
-	createdAt: string; // ISO
-	updatedAt: string; // ISO
-}
-
-export type StylePreset = "linear" | "masonry";
-
-const NotesPropsSchema = z.object({
-	title: z.string().default("Notes"),
-	stylePreset: z.enum(["linear", "masonry"]).default("linear"),
-	allowMarkdown: z.boolean().default(true),
-	enableDnD: z.boolean().default(true),
-	enableBulk: z.boolean().default(true),
-	maxNotes: z.number().min(50).max(5000).default(1000),
-});
-export type NotesProps = z.infer<typeof NotesPropsSchema>;
-
-const NotesSettingsSchema = z.object({
-	sortBy: z.enum(["updatedAt", "createdAt", "title"]).default("updatedAt"),
-	sortDir: z.enum(["asc", "desc"]).default("desc"),
-	showCounts: z.boolean().default(true),
-	compact: z.boolean().default(false),
-	theme: z.enum(["system", "light", "dark"]).default("system"),
-});
-export type NotesSettings = z.infer<typeof NotesSettingsSchema>;
 
 export interface NotesWidgetV4Props {
 	widgetId: string;
@@ -748,5 +719,3 @@ export default function NotesWidgetV4({
 		</div>
 	);
 }
-
-export { NotesPropsSchema, NotesSettingsSchema };

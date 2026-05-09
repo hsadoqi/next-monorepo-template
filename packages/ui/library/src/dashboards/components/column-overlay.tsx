@@ -30,17 +30,29 @@ export const ColumnOverlay = ({
 
 	return (
 		<div
-			className="absolute inset-0 z-10 pointer-events-none flex"
-			style={{ paddingLeft: containerPaddingX, paddingRight: containerPaddingX }}
+			style={{
+				position: "absolute",
+				inset: 0,
+				zIndex: 10,
+				pointerEvents: "none",
+				display: "flex",
+				paddingLeft: containerPaddingX,
+				paddingRight: containerPaddingX,
+			}}
 		>
 			{columnData.map(({ key, isLast }) => (
 				<div
 					key={key}
 					style={{
 						width: `${columnWidth}px`,
-						marginRight: isLast ? 0 : `${marginX}px`,
+						marginRight: isLast ? 0 : marginX,
+						position: "relative",
+						height: "100%",
+						backgroundColor: "rgba(59, 130, 246, 0.15)",
+						borderLeft: "1px solid rgba(96, 165, 250, 0.4)",
+						borderRight: "1px solid rgba(96, 165, 250, 0.4)",
+						borderRadius: "0.125rem",
 					}}
-					className="bg-blue-500/10 h-full rounded-sm"
 				/>
 			))}
 		</div>

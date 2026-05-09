@@ -64,7 +64,7 @@ export const ReactGridLayout = ({ layoutRef }: { layoutRef: RefObject<LayoutItem
 			key={currentBreakpoint}
 			{...config}
 			data-testid="react-grid-layout"
-			className="layout flex-1 overflow-y-auto no-scrollbar shadow-inner bg-[var(--background)] text-[var(--foreground)] h-full flex"
+			className="layout flex-1 overflow-y-auto no-scrollbar bg-background text-foreground h-full flex"
 			layouts={safeLayouts}
 			breakpoints={config?.breakpoints}
 			cols={config?.cols}

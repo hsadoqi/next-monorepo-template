@@ -1,5 +1,5 @@
 import { Card } from "@repo/ui-components/ui/card";
-import { Clock } from "lucide-react";
+import { ActivitySquare } from "lucide-react";
 import type React from "react";
 
 interface Activity {
@@ -44,18 +44,42 @@ export const RecentActivity: React.FC<RecentActivityProps> = ({
 	};
 
 	return (
-		<Card className="p-4">
-			<h3 className="font-semibold mb-3">Recent Activity</h3>
-			<div className="space-y-3">
-				{activities.map((activity) => (
-					<div key={activity.id} className="flex gap-3">
-						<Clock className="w-4 h-4 text-muted-foreground flex-shrink-0 mt-1" />
-						<div className="flex-1 min-w-0">
-							<p className="text-sm truncate">{activity.description}</p>
-							<p className="text-xs text-muted-foreground">{formatTime(activity.timestamp)}</p>
-						</div>
+		<Card className="p-6 flex flex-col h-full bg-gradient-to-br from-card to-card/95">
+			<div className="flex items-center gap-3 mb-6">
+				<div className="p-2 rounded-lg bg-primary/10">
+					<ActivitySquare className="w-5 h-5 text-primary" />
+				</div>
+				<h3 className="font-semibold text-foreground">Recent Activity</h3>
+			</div>
+			<div className="space-y-3 flex-1">
+				{activities.length === 0 ? (
+					<div className="flex items-center justify-center h-20 text-muted-foreground">
+						<p className="text-sm">No recent activity</p>
 					</div>
-				))}
+				) : (
+					activities.map((activity, index) => (
+						<div
+							key={activity.id}
+							className="flex gap-4 pb-3 last:pb-0"
+							style={
+								index !== activities.length - 1 ? { borderBottom: "1px solid var(--border)" } : {}
+							}
+						>
+							<div className="flex flex-col items-center">
+								<div className="w-2 h-2 rounded-full bg-primary mt-1.5" />
+								{index !== activities.length - 1 && <div className="w-0.5 h-8 bg-border my-1" />}
+							</div>
+							<div className="flex-1 min-w-0 pt-0.5">
+								<p className="text-sm font-medium text-foreground line-clamp-2">
+									{activity.description}
+								</p>
+								<p className="text-xs text-muted-foreground mt-1">
+									{formatTime(activity.timestamp)}
+								</p>
+							</div>
+						</div>
+					))
+				)}
 			</div>
 		</Card>
 	);

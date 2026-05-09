@@ -1,5 +1,5 @@
 import { Card } from "@repo/ui-components/ui/card";
-import { CheckCircle2, Circle, X } from "lucide-react";
+import { CheckCircle2, Circle, Target, X } from "lucide-react";
 import type React from "react";
 import { useState } from "react";
 
@@ -33,50 +33,77 @@ export const TodaysFocus: React.FC<TodaysFocusProps> = ({
 	};
 
 	const completedCount = goals.filter((goal) => goal.completed).length;
+	const totalCount = goals.length;
+	const completionPercentage = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
 
 	return (
-		<Card className="p-4">
-			<div className="flex items-center justify-between mb-3">
-				<h3 className="font-semibold">Today&apos;s Focus</h3>
-				<span className="text-sm text-muted-foreground">
-					{completedCount}/{goals.length}
+		<Card className="p-6 flex flex-col h-full bg-gradient-to-br from-card to-card/95">
+			<div className="flex items-center justify-between mb-6">
+				<div className="flex items-center gap-3">
+					<div className="p-2 rounded-lg bg-primary/10">
+						<Target className="w-5 h-5 text-primary" />
+					</div>
+					<div>
+						<h3 className="font-semibold text-foreground">Today&apos;s Focus</h3>
+						<p className="text-xs text-muted-foreground">{completionPercentage}% complete</p>
+					</div>
+				</div>
+				<span className="text-sm font-semibold text-muted-foreground bg-muted px-2.5 py-1 rounded-md">
+					{completedCount}/{totalCount}
 				</span>
 			</div>
-			<div className="space-y-2">
-				{goals.map((goal) => (
-					<div
-						key={goal.id}
-						className="flex items-center gap-2 p-2 rounded hover:bg-muted transition-colors"
-					>
-						<button
-							type="button"
-							onClick={() => toggleGoal(goal.id)}
-							className="flex-shrink-0"
-							aria-label={goal.completed ? "Mark incomplete" : "Mark complete"}
-						>
-							{goal.completed ? (
-								<CheckCircle2 className="w-4 h-4 text-green-500" />
-							) : (
-								<Circle className="w-4 h-4 text-muted-foreground" />
-							)}
-						</button>
-						<span
-							className={`flex-1 text-sm ${
-								goal.completed ? "line-through text-muted-foreground" : ""
-							}`}
-						>
-							{goal.text}
-						</span>
-						<button
-							type="button"
-							onClick={() => removeGoal(goal.id)}
-							className="flex-shrink-0 opacity-0 group-hover:opacity-100"
-							aria-label="Remove"
-						>
-							<X className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors" />
-						</button>
+
+			{/* Progress Bar */}
+			<div className="w-full bg-muted rounded-full h-2 mb-4 overflow-hidden">
+				<div
+					className="bg-gradient-to-r from-primary to-accent h-full rounded-full transition-all duration-300"
+					style={{ width: `${completionPercentage}%` }}
+				/>
+			</div>
+
+			<div className="space-y-2 flex-1">
+				{goals.length === 0 ? (
+					<div className="flex items-center justify-center h-24 text-muted-foreground">
+						<p className="text-sm">No goals set for today</p>
 					</div>
-				))}
+				) : (
+					goals.map((goal) => (
+						<div
+							key={goal.id}
+							className="group flex items-center gap-3 p-3 rounded-lg hover:bg-muted transition-colors duration-200"
+						>
+							<button
+								type="button"
+								onClick={() => toggleGoal(goal.id)}
+								className="flex-shrink-0 transition-transform hover:scale-110"
+								aria-label={goal.completed ? "Mark incomplete" : "Mark complete"}
+							>
+								{goal.completed ? (
+									<CheckCircle2 className="w-5 h-5 text-success" />
+								) : (
+									<Circle className="w-5 h-5 text-muted-foreground" />
+								)}
+							</button>
+							<span
+								className={`flex-1 text-sm transition-all ${
+									goal.completed
+										? "line-through text-muted-foreground"
+										: "text-foreground font-medium"
+								}`}
+							>
+								{goal.text}
+							</span>
+							<button
+								type="button"
+								onClick={() => removeGoal(goal.id)}
+								className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity"
+								aria-label="Remove"
+							>
+								<X className="w-4 h-4 text-muted-foreground hover:text-destructive transition-colors" />
+							</button>
+						</div>
+					))
+				)}
 			</div>
 		</Card>
 	);

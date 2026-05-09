@@ -2,4 +2,10 @@ packages:
   - "apps/*"
   - "packages/configs/*"
   - "packages/shared/*"
-  - "packages/ui/*"
+  - "packages/ui/components"
+  - "packages/ui/hooks"
+  - "packages/ui/library"
+  - "packages/ui/providers"
+  - "packages/ui/theme/*"
+
+strictPeerDependencies: false

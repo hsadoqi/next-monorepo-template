@@ -127,10 +127,8 @@ const BreakpointToggleWrapper = ({
 	}, [externalContainerRef, syncLayoutMetrics]);
 
 	return (
-		<>
-			<div
-				className={`flex-1 flex items-center justify-between mx-auto w-full shrink-0 ${containerWidthClass} absolute top-0 right-0 left-0 z-30 px-4`}
-			>
+		<div className="relative w-full h-full flex flex-col">
+			<div className="relative z-50 flex items-center justify-between shrink-0 px-4 py-3 border-b border-border bg-background">
 				<OverlayToggle
 					showCols={showCols}
 					showRows={showRows}
@@ -149,7 +147,7 @@ const BreakpointToggleWrapper = ({
 
 			<div
 				ref={containerRef}
-				className={`relative size-full ${containerWidthClass} flex flex-col transition-all duration-200 ease-linear m-auto flex-1`}
+				className={`relative flex-1 ${containerWidthClass} flex flex-col transition-all duration-200 ease-linear mx-auto w-full overflow-auto`}
 			>
 				{showCols && (
 					<ColumnOverlay
@@ -169,7 +167,7 @@ const BreakpointToggleWrapper = ({
 				)}
 				{children}
 			</div>
-		</>
+		</div>
 	);
 };
 

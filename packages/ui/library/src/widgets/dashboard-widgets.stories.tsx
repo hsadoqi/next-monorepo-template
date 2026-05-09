@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 import {
-	CalendarComponent,
 	CompletionMetrics,
 	QuickCapture,
 	RecentActivity,
+	ScheduleComponent,
 	StreakCalendar,
 	TimeSpent,
 	TodaysFocus,
@@ -24,12 +25,33 @@ const now = Date.now();
 
 export const CompleteDashboard: StoryObj = {
 	render: () => (
-		<div className="space-y-8">
+		<div className="min-h-screen bg-background p-4 md:p-6">
+			{/* Header */}
+			<div className="mb-8">
+				<h1 className="text-3xl font-bold text-foreground mb-2">Dashboard</h1>
+				<p className="text-muted-foreground">
+					Welcome back! Here&apos;s your productivity overview.
+				</p>
+			</div>
+
 			{/* Metrics Row */}
-			<div>
-				<h2 className="mb-4 text-2xl font-bold">Metrics & Analytics</h2>
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-					<CompletionMetrics completed={7} total={10} title="Sprint Progress" />
+			<div className="mb-8">
+				<h2 className="text-lg font-semibold text-foreground mb-4">Metrics & Analytics</h2>
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+					<CompletionMetrics
+						completed={7}
+						total={10}
+						title="Sprint Progress"
+						showTrend={true}
+						trend={12}
+					/>
+					<CompletionMetrics
+						completed={15}
+						total={20}
+						title="Monthly Goals"
+						showTrend={true}
+						trend={-3}
+					/>
 					<TimeSpent
 						categories={[
 							{ name: "Development", duration: 240, percentage: 50 },
@@ -43,9 +65,9 @@ export const CompleteDashboard: StoryObj = {
 			</div>
 
 			{/* Time Management Row */}
-			<div>
-				<h2 className="mb-4 text-2xl font-bold">Time Management</h2>
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+			<div className="mb-8">
+				<h2 className="text-lg font-semibold text-foreground mb-4">Time Management</h2>
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 					<StreakCalendar
 						days={Array.from({ length: 42 }, (_, _i) => (Math.random() > 0.5 ? 1 : 0))}
 						currentStreak={12}
@@ -61,14 +83,14 @@ export const CompleteDashboard: StoryObj = {
 			</div>
 
 			{/* Activity & Input Row */}
-			<div>
-				<h2 className="mb-4 text-2xl font-bold">Activity & Input</h2>
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+			<div className="mb-8">
+				<h2 className="text-lg font-semibold text-foreground mb-4">Activity & Input</h2>
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 					<RecentActivity
 						activities={[
 							{
 								id: "1",
-								description: "Completed 'Design review'",
+								description: "Completed &apos;Design review&apos;",
 								timestamp: new Date(now - 600000),
 							},
 							{ id: "2", description: "Pushed to main branch", timestamp: new Date(now - 1800000) },
@@ -80,9 +102,11 @@ export const CompleteDashboard: StoryObj = {
 			</div>
 
 			{/* Calendar */}
-			<div>
-				<h2 className="mb-4 text-2xl font-bold">Calendar</h2>
-				<CalendarComponent />
+			<div className="mb-8">
+				<h2 className="text-lg font-semibold text-foreground mb-4">Schedule</h2>
+				<div className="rounded-lg overflow-hidden border border-border">
+					<ScheduleComponent />
+				</div>
 			</div>
 		</div>
 	),
@@ -92,18 +116,38 @@ export const CompleteDashboard: StoryObj = {
 
 export const MetricsSection: StoryObj = {
 	render: () => (
-		<div className="space-y-6">
+		<div className="space-y-6 p-6 bg-background min-h-screen">
 			<div>
-				<h3 className="mb-3 text-lg font-semibold">Completion Metrics - Variations</h3>
+				<h3 className="mb-4 text-lg font-semibold text-foreground">
+					Completion Metrics - Variations
+				</h3>
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-					<CompletionMetrics completed={0} total={10} title="Not Started" />
-					<CompletionMetrics completed={5} total={10} title="In Progress" />
-					<CompletionMetrics completed={10} total={10} title="Completed" />
+					<CompletionMetrics
+						completed={0}
+						total={10}
+						title="Not Started"
+						showTrend={true}
+						trend={0}
+					/>
+					<CompletionMetrics
+						completed={5}
+						total={10}
+						title="In Progress"
+						showTrend={true}
+						trend={8}
+					/>
+					<CompletionMetrics
+						completed={10}
+						total={10}
+						title="Completed"
+						showTrend={true}
+						trend={15}
+					/>
 				</div>
 			</div>
 
 			<div>
-				<h3 className="mb-3 text-lg font-semibold">Time Spent - Team Overview</h3>
+				<h3 className="mb-4 text-lg font-semibold text-foreground">Time Spent - Team Overview</h3>
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 					<TimeSpent
 						categories={[
@@ -132,9 +176,11 @@ export const MetricsSection: StoryObj = {
 
 export const TimeManagementSection: StoryObj = {
 	render: () => (
-		<div className="space-y-6">
+		<div className="space-y-6 p-6 bg-background min-h-screen">
 			<div>
-				<h3 className="mb-3 text-lg font-semibold">Streak Streaks - Different Patterns</h3>
+				<h3 className="mb-4 text-lg font-semibold text-foreground">
+					Streak Streaks - Different Patterns
+				</h3>
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 					<StreakCalendar days={Array.from({ length: 42 }, () => 1)} currentStreak={42} />
 					<StreakCalendar
@@ -145,7 +191,9 @@ export const TimeManagementSection: StoryObj = {
 			</div>
 
 			<div>
-				<h3 className="mb-3 text-lg font-semibold">Today's Focus - Different States</h3>
+				<h3 className="mb-4 text-lg font-semibold text-foreground">
+					Today&apos;s Focus - Different States
+				</h3>
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 					<TodaysFocus
 						initialGoals={[
@@ -158,7 +206,7 @@ export const TimeManagementSection: StoryObj = {
 						initialGoals={[
 							{ id: "1", text: "All goals completed!", completed: true },
 							{ id: "2", text: "Extra mile task", completed: true },
-							{ id: "3", text: "Tomorrow's preview", completed: false },
+							{ id: "3", text: "Tomorrow&apos;s preview", completed: false },
 						]}
 					/>
 				</div>
@@ -171,9 +219,11 @@ export const TimeManagementSection: StoryObj = {
 
 export const ActivitySection: StoryObj = {
 	render: () => (
-		<div className="space-y-6">
+		<div className="space-y-6 p-6 bg-background min-h-screen">
 			<div>
-				<h3 className="mb-3 text-lg font-semibold">Recent Activity - Different Timelines</h3>
+				<h3 className="mb-4 text-lg font-semibold text-foreground">
+					Recent Activity - Different Timelines
+				</h3>
 				<div className="grid grid-cols-1 gap-4">
 					<RecentActivity
 						activities={[
@@ -208,7 +258,9 @@ export const ActivitySection: StoryObj = {
 			</div>
 
 			<div>
-				<h3 className="mb-3 text-lg font-semibold">Quick Capture - Ready for Input</h3>
+				<h3 className="mb-4 text-lg font-semibold text-foreground">
+					Quick Capture - Ready for Input
+				</h3>
 				<QuickCapture />
 			</div>
 		</div>
@@ -224,8 +276,8 @@ export const MobileLayout: StoryObj = {
 		},
 	},
 	render: () => (
-		<div className="space-y-4">
-			<CompletionMetrics completed={7} total={10} title="Today" />
+		<div className="space-y-4 p-4 bg-background min-h-screen">
+			<CompletionMetrics completed={7} total={10} title="Today" showTrend={true} trend={5} />
 			<TimeSpent
 				categories={[
 					{ name: "Work", duration: 300, percentage: 60 },
@@ -253,8 +305,8 @@ export const TabletLayout: StoryObj = {
 		},
 	},
 	render: () => (
-		<div className="grid grid-cols-2 gap-4">
-			<CompletionMetrics completed={7} total={10} />
+		<div className="grid grid-cols-2 gap-4 p-4 bg-background min-h-screen">
+			<CompletionMetrics completed={7} total={10} showTrend={true} trend={3} />
 			<TimeSpent />
 			<StreakCalendar currentStreak={12} />
 			<TodaysFocus initialGoals={[{ id: "1", text: "Task 1", completed: false }]} />
@@ -269,8 +321,8 @@ export const DesktopLayout: StoryObj = {
 		},
 	},
 	render: () => (
-		<div className="grid grid-cols-3 gap-4">
-			<CompletionMetrics completed={7} total={10} />
+		<div className="grid grid-cols-3 gap-4 p-6 bg-background min-h-screen">
+			<CompletionMetrics completed={7} total={10} showTrend={true} trend={10} />
 			<TimeSpent />
 			<StreakCalendar currentStreak={12} />
 			<RecentActivity />

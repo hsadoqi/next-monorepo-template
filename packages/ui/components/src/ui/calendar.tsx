@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@repo/ui-components/lib/utils";
-import { Button, buttonVariants } from "@repo/ui-components/ui/button";
+import { Button, buttonVariants } from "@repo/ui-components/ui/button/button";
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import * as React from "react";
 import { type DayButton, DayPicker, getDefaultClassNames } from "react-day-picker";

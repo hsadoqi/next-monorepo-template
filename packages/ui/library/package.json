@@ -34,14 +34,22 @@
 		"./dashboards": {
 			"types": "./dist/dashboards/index.d.ts",
 			"import": "./dist/dashboards/index.js"
+		},
+		"./editor/*": {
+			"types": "./dist/editor/*.d.ts",
+			"import": "./dist/editor/*.js"
+		},
+		"./editor": {
+			"types": "./dist/editor/index.d.ts",
+			"import": "./dist/editor/index.js"
 		}
 	},
 	"scripts": {
 		"build": "tsc",
 		"check": "tsc --noEmit",
-		"format": "pnpm exec biome check --write src/index.ts src/registry.ts src/registry-types.ts src/widgets/index.ts src/widgets/widget-registry.ts src/widgets/dashboard-widgets.stories.tsx src/widgets/date-time src/widgets/productivity",
-		"format:check": "pnpm exec biome check src/index.ts src/registry.ts src/registry-types.ts src/widgets/index.ts src/widgets/widget-registry.ts src/widgets/dashboard-widgets.stories.tsx src/widgets/date-time src/widgets/productivity",
-		"lint": "pnpm exec biome lint src/index.ts src/registry.ts src/registry-types.ts src/widgets/index.ts src/widgets/widget-registry.ts src/widgets/dashboard-widgets.stories.tsx src/widgets/date-time src/widgets/productivity",
+		"format": "pnpm exec biome check --write .",
+		"format:check": "pnpm exec biome check .",
+		"lint": "pnpm exec biome lint .",
 		"test": "vitest run --passWithNoTests",
 		"test:ui": "vitest --ui"
 	},
@@ -65,6 +73,7 @@
 		"@storybook/react": "10.3.6",
 		"@testing-library/react": "^14.1.2",
 		"@testing-library/user-event": "^14.5.1",
+		"@types/node": "^20",
 		"@types/react": "^19.2.6",
 		"@types/react-dom": "^19.2.6",
 		"react-markdown": "^10.1.0",

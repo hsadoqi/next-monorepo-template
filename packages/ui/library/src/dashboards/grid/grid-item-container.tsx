@@ -11,7 +11,7 @@ export const GridItemContainer = ({
 	return (
 		<div
 			className={cn(
-				"@container relative flex-1 flex flex-col size-full border border-muted rounded-xl shadow-xs bg-white dark:bg-black/80 transition-opacity",
+				"@container relative flex-1 flex flex-col size-full border border-border rounded-md bg-card transition-opacity",
 				isLocked && "opacity-70 pointer-events-none",
 			)}
 		>

@@ -1,8 +1,29 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @import "@repo/tailwind-config";
 
 @source "../../../../packages/ui/components/src";
 
+@custom-variant dark (&:is(.dark *));
+@custom-variant light (&:is(:not(.dark) *, :is(.light *)));
+
 .docs-story {
-	@apply bg-background text-foreground;
+	@apply bg-(--background) text-(--foreground);
+}
+
+@layer base {
+	* {
+		@apply border-(--border) outline-(--ring)/50;
+	}
+
+	body {
+		@apply bg-(--background) text-(--foreground);
+		font-family: var(--font-sans);
+	}
+}
+
+body {
+	font-feature-settings:
+		"rlig" 1,
+		"calt" 1;
 }

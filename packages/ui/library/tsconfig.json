@@ -1,10 +1,9 @@
 {
 	"extends": "@repo/typescript-config/base.json",
 	"compilerOptions": {
-		"rootDir": "../../",
+		"rootDir": "../",
 		"outDir": "dist",
 		"skipLibCheck": true,
-		"types": ["vitest/globals"],
 		"jsx": "react-jsx",
 		"paths": {
 			"@/widgets/*": ["./src/widgets/*"],
@@ -13,6 +12,5 @@
 			"@repo/ui-components/*": ["../components/src/*"]
 		}
 	},
-	"include": ["src"],
-	"exclude": ["dist", "**/.private/**"]
+	"include": ["src"]
 }

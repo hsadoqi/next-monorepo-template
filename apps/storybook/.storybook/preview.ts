@@ -1,15 +1,21 @@
 import "../src/styles/globals.css";
 
+import { injectThemeCSS } from "@repo/ui-theme-styles";
+import { generateCompleteThemeCSS, themePresets } from "@repo/ui-theme-tokens";
 import type { Decorator, Preview } from "@storybook/react-vite";
 
-// Toggles the `dark` class on <html> to activate Tailwind's class-based dark mode
-// and trigger `.dark { ... }` CSS variable overrides from shared-styles.css.
 const withTheme: Decorator = (Story, context) => {
-	const theme = (context.globals as Record<string, string>).theme ?? "light";
+	const style = (context.globals as Record<string, string>).themeStyle ?? "default";
+	const mode = (context.globals as Record<string, string>).theme ?? "light";
+	const preset = themePresets[style] ?? themePresets.default;
+
 	if (typeof document !== "undefined") {
-		document.documentElement.classList.toggle("dark", theme === "dark");
-		document.querySelector(".docs-story")?.classList.toggle("dark", theme === "dark");
+		const css = generateCompleteThemeCSS(preset.config);
+		injectThemeCSS(css, style);
+		document.documentElement.classList.toggle("dark", mode === "dark");
+		document.querySelector(".docs-story")?.classList.toggle("dark", mode === "dark");
 	}
+
 	return Story();
 };
 
@@ -22,11 +28,27 @@ const preview: Preview = {
 	// A full fix requires @storybook/addon-test, which has no stable v10 release yet.
 
 	globalTypes: {
+		themeStyle: {
+			description: "Visual style preset",
+			defaultValue: "default",
+			toolbar: {
+				title: "Style",
+				icon: "box",
+				items: [
+					{ value: "default", title: "Default" },
+					{ value: "professional", title: "Professional" },
+					{ value: "futuristic", title: "Futuristic" },
+					{ value: "fantasy", title: "Fantasy" },
+					{ value: "neon", title: "Neon" },
+				],
+				dynamicTitle: true,
+			},
+		},
 		theme: {
 			description: "Color scheme",
 			defaultValue: "light",
 			toolbar: {
-				title: "Theme",
+				title: "Mode",
 				icon: "paintbrush",
 				items: [
 					{ value: "light", icon: "sun", title: "Light" },
@@ -55,8 +77,9 @@ const preview: Preview = {
 				date: /Date$/i,
 			},
 		},
-		layout: "centered",
+		layout: "padded",
 	},
+	tags: ["autodocs"],
 };
 
 export default preview;

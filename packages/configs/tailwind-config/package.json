@@ -4,7 +4,7 @@
 	"type": "module",
 	"private": true,
 	"exports": {
-		".": "./shared-styles.css",
+		".": "./shared-styles/index.css",
 		"./postcss": {
 			"types": "./postcss.config.d.ts",
 			"default": "./postcss.config.js"
@@ -14,6 +14,7 @@
 		"clean": "rm -rf .turbo node_modules"
 	},
 	"devDependencies": {
+		"@tailwindcss/typography": "^0.5.19",
 		"postcss": "^8.5.3",
 		"tailwindcss": "4.2.4"
 	}

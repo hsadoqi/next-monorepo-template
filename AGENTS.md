@@ -8,7 +8,12 @@ These rules apply to all AI coding agents working in this monorepo.
 - Do not introduce deprecated patterns when modern alternatives exist.
 - Do not rename packages or aliases unless explicitly requested.
 - Keep package namespace conventions as `@repo/*`.
-- Use latest modern best practices and techniques
+- Use latest modern best practices and techniques.
+- Always co-locate stories and tests with source files.
+- Avoid unnecessary abstraction or indirection; prefer direct and clear code.
+- Use kebab-case for all file names, including test and story files, and folders. 
+- Create folders for related components and their stories/tests when it improves organization, but do not create unnecessary nesting.
+- Use PascalCase for React component names and export identifiers.
 
 ## Stack Baseline
 

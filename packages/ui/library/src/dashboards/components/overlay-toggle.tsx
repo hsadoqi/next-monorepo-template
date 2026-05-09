@@ -32,23 +32,23 @@ export const OverlayToggle: React.FC<OverlayToggleProps> = ({
 				if (val.includes("cols") && !showCols) toggleCols();
 				if (!val.includes("cols") && showCols) toggleCols();
 			}}
-			className="gap-1 flex items-center rounded-lg border border-border/60 bg-muted/20 px-1 py-1"
+			className="gap-2 flex items-center rounded-lg border-2 border-border bg-muted/40 px-2 py-2 backdrop-blur-sm"
 		>
 			<ToggleGroupItem
 				value="cols"
 				aria-label="Toggle columns overlay"
-				className="data-[state=on]:bg-blue-500/20 data-[state=on]:text-blue-700"
+				className="relative data-[state=off]:bg-transparent data-[state=on]:bg-gradient-to-br data-[state=on]:from-blue-500/40 data-[state=on]:to-blue-600/20 data-[state=on]:text-blue-700 data-[state=on]:border-2 data-[state=on]:border-blue-500/60 hover:bg-blue-100/20 transition-all"
 			>
 				<span className="sr-only">Toggle Columns Overlay</span>
-				<Columns className="h-4 w-4" />
+				<Columns className="h-5 w-5" />
 			</ToggleGroupItem>
 			<ToggleGroupItem
 				value="rows"
 				aria-label="Toggle rows overlay"
-				className="data-[state=on]:bg-red-500/20 data-[state=on]:text-red-700"
+				className="relative data-[state=off]:bg-transparent data-[state=on]:bg-gradient-to-br data-[state=on]:from-red-500/40 data-[state=on]:to-red-600/20 data-[state=on]:text-red-700 data-[state=on]:border-2 data-[state=on]:border-red-500/60 hover:bg-red-100/20 transition-all"
 			>
 				<span className="sr-only">Toggle Rows Overlay</span>
-				<Rows className="h-4 w-4" />
+				<Rows className="h-5 w-5" />
 			</ToggleGroupItem>
 		</ToggleGroup>
 	);

@@ -18,7 +18,7 @@ export const GridItem = React.forwardRef<HTMLButtonElement, GridItemProps>(
 				type="button"
 				ref={ref}
 				className={cn(
-					"flex flex-col size-full relative overflow-hidden rounded-lg shadow-md group",
+					"flex flex-col size-full relative overflow-hidden rounded-lg border border-border bg-card shadow-sm hover:shadow-md transition-shadow group",
 					className,
 				)}
 				style={style}
@@ -28,9 +28,9 @@ export const GridItem = React.forwardRef<HTMLButtonElement, GridItemProps>(
 				data-testid="grid-item"
 			>
 				<GridItemContainer isLocked={false}>
-					<div className="flex-1 overflow-hidden p-2 relative pt-6">
-						<Suspense fallback={<div>Loading...</div>}>
-							{children ?? <div>Widget Content</div>}
+					<div className="flex-1 overflow-hidden p-4 relative">
+						<Suspense fallback={<div className="text-muted-foreground text-sm">Loading...</div>}>
+							{children ?? <div className="text-muted-foreground">Widget Content</div>}
 						</Suspense>
 					</div>
 				</GridItemContainer>

@@ -49,7 +49,7 @@ const Grid = () => {
 	return (
 		<div
 			ref={containerRef}
-			className="bg-[var(--background-100)] flex-1 size-full max-size-full flex flex-col shadow-inner relative"
+			className="flex-1 size-full max-size-full flex flex-col relative bg-background"
 		>
 			<BreakpointToggleWrapper containerRef={containerRef}>
 				{mounted ? <ReactGridLayout layoutRef={layoutRef} /> : <WidgetAreaSkeleton />}

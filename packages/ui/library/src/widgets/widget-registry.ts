@@ -1,6 +1,6 @@
 import type { ShowcaseComponentMeta } from "@/registry";
-import { CalendarComponent } from "./date-time/calendar";
 import { RecentActivity } from "./date-time/recent-activity";
+import { ScheduleComponent } from "./date-time/schedule";
 import { StreakCalendar } from "./date-time/streak-calendar";
 import { TimeSpent } from "./date-time/time-spent";
 import { CompletionMetrics } from "./productivity/completion-metrics";
@@ -102,12 +102,12 @@ export const widgetRegistry: ShowcaseComponentMeta[] = [
 		},
 	},
 	{
-		name: "Calendar",
-		description: "Interactive calendar widget with day/week/month views",
-		component: CalendarComponent,
+		name: "Schedule",
+		description: "Interactive schedule widget with day/week/month views",
+		component: ScheduleComponent,
 		maturity: "incubating",
 		category: "widgets",
-		tags: ["calendar", "date", "visualization"],
+		tags: ["schedule", "time", "visualization"],
 		props: {
 			compact: false,
 			className: "",

@@ -1,4 +1,4 @@
-import { Button } from "@repo/ui-components/ui/button";
+import { Button } from "@repo/ui-components/ui/button/button";
 import { Card } from "@repo/ui-components/ui/card";
 import { Input } from "@repo/ui-components/ui/input";
 import { Send } from "lucide-react";

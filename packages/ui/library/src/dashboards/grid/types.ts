@@ -3,7 +3,7 @@ import type { CompactType } from "react-grid-layout/legacy";
 export type BreakpointType = "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
 
 export const defaultBreakpoints: Record<BreakpointType, number> = {
-	xxs: 0,
+	xxs: 320,
 	xs: 480,
 	sm: 768,
 	md: 996,
