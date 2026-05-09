@@ -15,39 +15,39 @@ import type { BreakpointType } from "../grid/types";
  * @returns Object containing state and handlers
  */
 export const useBreakpointToggleState = (
-    initialBreakpoint: BreakpointType = "lg",
-    initialContainerWidth: number = 1600,
+	initialBreakpoint: BreakpointType = "lg",
+	initialContainerWidth: number = 1600,
 ) => {
-    const [value, setValue] = useState<BreakpointType>(initialBreakpoint);
-    const [containerWidth, setContainerWidth] = useState(initialContainerWidth);
-    const [isCustom, setIsCustom] = useState(false);
+	const [value, setValue] = useState<BreakpointType>(initialBreakpoint);
+	const [containerWidth, setContainerWidth] = useState(initialContainerWidth);
+	const [isCustom, setIsCustom] = useState(false);
 
-    // Auto-update breakpoint when container width changes (unless user manually set it)
-    useEffect(() => {
-        if (!isCustom) {
-            const newBreakpoint = getBreakpointForWidth(containerWidth) as BreakpointType;
-            setValue(newBreakpoint);
-        }
-    }, [containerWidth, isCustom]);
+	// Auto-update breakpoint when container width changes (unless user manually set it)
+	useEffect(() => {
+		if (!isCustom) {
+			const newBreakpoint = getBreakpointForWidth(containerWidth) as BreakpointType;
+			setValue(newBreakpoint);
+		}
+	}, [containerWidth, isCustom]);
 
-    const handleBreakpointChange = (bp: BreakpointType) => {
-        setValue(bp);
-        setIsCustom(true); // User manually set it
-    };
+	const handleBreakpointChange = (bp: BreakpointType) => {
+		setValue(bp);
+		setIsCustom(true); // User manually set it
+	};
 
-    const handleReset = () => {
-        const newBreakpoint = getBreakpointForWidth(containerWidth) as BreakpointType;
-        setValue(newBreakpoint);
-        setIsCustom(false); // Clear custom flag
-    };
+	const handleReset = () => {
+		const newBreakpoint = getBreakpointForWidth(containerWidth) as BreakpointType;
+		setValue(newBreakpoint);
+		setIsCustom(false); // Clear custom flag
+	};
 
-    return {
-        value,
-        containerWidth,
-        isCustom,
-        setValue,
-        setContainerWidth,
-        handleBreakpointChange,
-        handleReset,
-    };
+	return {
+		value,
+		containerWidth,
+		isCustom,
+		setValue,
+		setContainerWidth,
+		handleBreakpointChange,
+		handleReset,
+	};
 };

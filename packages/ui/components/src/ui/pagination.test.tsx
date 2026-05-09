@@ -21,7 +21,7 @@ describe("Pagination", () => {
 						<PaginationLink href="#">1</PaginationLink>
 					</PaginationItem>
 				</PaginationContent>
-			</Pagination>
+			</Pagination>,
 		);
 
 		const pagination = screen.getByTestId("pagination");
@@ -39,7 +39,7 @@ describe("Pagination", () => {
 						<PaginationNext href="#next" data-testid="next" />
 					</PaginationItem>
 				</PaginationContent>
-			</Pagination>
+			</Pagination>,
 		);
 
 		const prevButton = screen.getByTestId("prev");
@@ -63,7 +63,7 @@ describe("Pagination", () => {
 						<PaginationLink href="#page-3">3</PaginationLink>
 					</PaginationItem>
 				</PaginationContent>
-			</Pagination>
+			</Pagination>,
 		);
 
 		const page1 = screen.getByRole("link", { name: "1" });
@@ -91,7 +91,7 @@ describe("Pagination", () => {
 						<PaginationLink href="#">3</PaginationLink>
 					</PaginationItem>
 				</PaginationContent>
-			</Pagination>
+			</Pagination>,
 		);
 
 		const activePage = screen.getByTestId("active-page");
@@ -120,7 +120,7 @@ describe("Pagination", () => {
 						<PaginationNext href="#next" />
 					</PaginationItem>
 				</PaginationContent>
-			</Pagination>
+			</Pagination>,
 		);
 
 		expect(screen.getAllByRole("link")).toHaveLength(5);

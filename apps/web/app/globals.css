@@ -1,27 +1,26 @@
 @import "tailwindcss";
-@plugin "@tailwindcss/typography";
-@import "../../../packages/configs/tailwind-config/shared-styles/index.css";
+@import "@repo/tailwind-config";
 
 @source "../../../packages";
 
 @layer base {
-        * {
-                @apply border-border outline-ring/50;
-        }
+	* {
+		@apply border-border outline-ring/50;
+	}
 
-        body {
-                @apply bg-background text-foreground;
-                font-family: var(--font-sans);
-        }
+	body {
+		@apply bg-background text-foreground;
+		font-family: var(--font-sans);
+	}
 }
 
 body {
-        font-feature-settings:
-                "rlig" 1,
-                "calt" 1;
+	font-feature-settings:
+		"rlig" 1,
+		"calt" 1;
 }
 
 @theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+	--font-sans: var(--font-geist-sans);
+	--font-mono: var(--font-geist-mono);
 }
